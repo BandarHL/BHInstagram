@@ -47,7 +47,7 @@
 + (BOOL)noScreenShotAlert {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"remove_screenshot_alert"];
 }
-+ (BOOL)unlimtedReply {
++ (BOOL)unlimitedReplay {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"unlimited_replay"];
 }
 + (BOOL)noSeenReceipt {

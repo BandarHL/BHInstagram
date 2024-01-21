@@ -82,7 +82,7 @@ static BOOL isAuthenticationShowed = FALSE;
 }
 %end
 
-// tweak settings
+// Tweak settings
 %hook IGProfileMenuSheetViewController
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return 9;
@@ -97,7 +97,7 @@ static BOOL isAuthenticationShowed = FALSE;
 
         [bhinstacell.imageView setImage:gear];
         [bhinstacell.imageView setTintColor:[UIColor labelColor]];
-        [bhinstacell.textLabel setText:@"  BHInsta settings"];
+        [bhinstacell.textLabel setText:@" BHInsta settings"];
 
         return bhinstacell;
     }
@@ -115,7 +115,7 @@ static BOOL isAuthenticationShowed = FALSE;
 }
 %end
 
-
+// Keep deleted messages
 %hook IGDirectRealtimeIrisThreadDelta
 + (id)removeItemWithMessageId:(id)arg1 {
     if ([BHIManager keepDeletedMessage]) {
@@ -132,6 +132,8 @@ static BOOL isAuthenticationShowed = FALSE;
     return %orig(arg1);
 }
 %end
+
+// Hide last seen messages
 %hook IGDirectThreadViewListAdapterDataSource
 - (BOOL)shouldUpdateLastSeenMessage {
     if ([BHIManager hideLastSeen]) {
@@ -143,6 +145,8 @@ static BOOL isAuthenticationShowed = FALSE;
     return %orig;
 }
 %end
+
+// No screenshot alert
 %hook IGDirectMessageMarkType
 + (id)visualItemScreenshotted {
     if ([BHIManager noScreenShotAlert]) {
@@ -151,13 +155,17 @@ static BOOL isAuthenticationShowed = FALSE;
     return %orig;
 }
 %end
+
+// Unlimited story replay
 %hook IGStoryPhotoView
 - (void)progressImageView:(id)arg1 didLoadImage:(id)arg2 loadSource:(id)arg3 networkRequestSummary:(id)arg4 {
-    if ([BHIManager unlimtedReply]) {} else {
+    if ([BHIManager unlimitedReplay]) {} else {
         return %orig;
     }
 }
 %end
+
+// No story seen
 %hook IGStoryViewerViewController
 - (void)fullscreenSectionController:(id)arg1 didMarkItemAsSeen:(id)arg2 {
     if ([BHIManager noSeenReceipt]) {
@@ -171,7 +179,7 @@ static BOOL isAuthenticationShowed = FALSE;
 }
 %end
 
-// seen button
+// Seen button (in DMs)
 %hook IGTallNavigationBarView
 - (void)setRightBarButtonItems:(NSArray <UIBarButtonItem *> *)items {
     NSMutableArray *new_items = [items mutableCopy];
@@ -200,7 +208,7 @@ static BOOL isAuthenticationShowed = FALSE;
 }
 %end
 
-// copy text
+// Copy text on long press
 %hook IGCoreTextView
 - (id)initWithWidth:(CGFloat)width {
     self = %orig;
@@ -434,7 +442,6 @@ static BOOL isAuthenticationShowed = FALSE;
     return %orig;
 }
 %end
-
 %hook IGVideoFeedViewController
 - (NSArray *)objectsForListAdapter:(id)arg1 {
     if ([BHIManager hideAds]) {
@@ -443,7 +450,6 @@ static BOOL isAuthenticationShowed = FALSE;
     return %orig;
 }
 %end
-
 %hook IGChainingFeedViewController
 - (NSArray *)objectsForListAdapter:(id)arg1 {
     if ([BHIManager hideAds]) {
@@ -452,7 +458,6 @@ static BOOL isAuthenticationShowed = FALSE;
     return %orig;
 }
 %end
-
 %hook IGStoryAdPool
 - (id)initWithUserSession:(id)arg1 {
     if ([BHIManager hideAds]) {
@@ -461,7 +466,6 @@ static BOOL isAuthenticationShowed = FALSE;
     return %orig;
 }
 %end
-
 %hook IGStoryAdsManager
 - (id)initWithUserSession:(id)arg1 storyViewerLoggingContext:(id)arg2 storyFullscreenSectionLoggingContext:(id)arg3 viewController:(id)arg4 {
     if ([BHIManager hideAds]) {
@@ -470,7 +474,6 @@ static BOOL isAuthenticationShowed = FALSE;
     return %orig;
 }
 %end
-
 %hook IGStoryAdsFetcher
 - (id)initWithUserSession:(id)arg1 delegate:(id)arg2 {
     if ([BHIManager hideAds]) {
@@ -479,7 +482,6 @@ static BOOL isAuthenticationShowed = FALSE;
     return %orig;
 }
 %end
-
 // IG 148.0
 %hook IGStoryAdsResponseParser
 - (id)parsedObjectFromResponse:(id)arg1 {
@@ -488,7 +490,6 @@ static BOOL isAuthenticationShowed = FALSE;
     }
     return %orig;
 }
-
 - (id)initWithReelStore:(id)arg1 {
     if ([BHIManager hideAds]) {
         return nil;
@@ -496,7 +497,6 @@ static BOOL isAuthenticationShowed = FALSE;
     return %orig;
 }
 %end
-
 %hook IGStoryAdsOptInTextView
 - (id)initWithBrandedContentStyledString:(id)arg1 sponsoredPostLabel:(id)arg2 {
     if ([BHIManager hideAds]) {
@@ -505,7 +505,6 @@ static BOOL isAuthenticationShowed = FALSE;
     return %orig;
 }
 %end
-
 %hook IGSundialAdsResponseParser
 - (id)parsedObjectFromResponse:(id)arg1 {
     if ([BHIManager hideAds]) {
@@ -513,7 +512,6 @@ static BOOL isAuthenticationShowed = FALSE;
     }
     return %orig;
 }
-
 - (id)initWithMediaStore:(id)arg1 userStore:(id)arg2 {
     if ([BHIManager hideAds]) {
         return nil;
@@ -810,7 +808,7 @@ static BOOL isAuthenticationShowed = FALSE;
 }
 %end
 
-// Show Profile image
+// Show profile image
 %hook IGProfilePicturePreviewViewController
 %property (nonatomic, strong) JGProgressHUD *hud;
 - (void)viewDidLoad {
@@ -865,7 +863,7 @@ static BOOL isAuthenticationShowed = FALSE;
 }
 %end
 
-// show like count
+// Show like count
 %hook IGFeedItem
 - (id)buildLikeCellStyledStringWithIcon:(id)arg1 andText:(id)arg2 style:(id)arg3 {
     if ([BHIManager showLikeCount]) {
@@ -879,7 +877,6 @@ static BOOL isAuthenticationShowed = FALSE;
     return %orig(arg1, arg2, arg3);
 }
 %end
-
 // for instagram v178.0
 %hook IGFeedItemLikeCountCell
 + (IGStyledString *)buildStyledStringWithMedia:(IGMedia *)arg1 feedItemRow:(id)arg2 pageCellState:(id)arg3 configuration:(id)arg4 feedConfiguration:(id)arg5 contentWidth:(double)arg6 textWidth:(double)arg7 combinedContextOptions:(long long)arg8 userSession:(id)arg9 {

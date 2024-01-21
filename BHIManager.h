@@ -17,7 +17,7 @@
 + (BOOL)keepDeletedMessage;
 + (BOOL)hideLastSeen;
 + (BOOL)noScreenShotAlert;
-+ (BOOL)unlimtedReply;
++ (BOOL)unlimitedReplay;
 + (BOOL)noSeenReceipt;
 + (BOOL)FLEX;
 + (void)showSaveVC:(id)item;

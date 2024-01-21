@@ -113,7 +113,7 @@
         PSSpecifier *keepDelMessage = [self newSwitchCellWithTitle:@"Keep deleted message" detailTitle:@"Keep deleted direct message on the chat." key:@"keep_deleted_message" defaultValue:true changeAction:nil];
         PSSpecifier *hideLastSeen = [self newSwitchCellWithTitle:@"Remove last seen" detailTitle:@"Remove last seen from the chat" key:@"remove_lastseen" defaultValue:false changeAction:nil];
         PSSpecifier *noScreenShotAlert = [self newSwitchCellWithTitle:@"Remove screenshot alert" detailTitle:nil key:@"remove_screenshot_alert" defaultValue:true changeAction:nil];
-        PSSpecifier *unlimtedReply = [self newSwitchCellWithTitle:@"Unlimited replay of once story" detailTitle:@"Unlimited replay of once story in direct chat" key:@"unlimited_replay" defaultValue:false changeAction:nil];
+        PSSpecifier *unlimitedReplay = [self newSwitchCellWithTitle:@"Unlimited replay of once story" detailTitle:@"Unlimited replay of once story in direct chat" key:@"unlimited_replay" defaultValue:false changeAction:nil];
         PSSpecifier *noStorySeenReceipt = [self newSwitchCellWithTitle:@"Disable Story Seen Receipt" detailTitle:nil key:@"no_seen_receipt" defaultValue:false changeAction:nil];
 
         PSSpecifier *appLock = [self newSwitchCellWithTitle:@"Padlock" detailTitle:@"Lock Instagram with passcode" key:@"padlock" defaultValue:false changeAction:nil];
@@ -148,7 +148,7 @@
             keepDelMessage,
             hideLastSeen,
             noScreenShotAlert,
-            unlimtedReply,
+            unlimitedReplay,
             noStorySeenReceipt,
 
             securitySection, // 5
