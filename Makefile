@@ -1,4 +1,8 @@
-TARGET := iphone:clang:latest:13.0
+# SoCuul: Had to add these to get it to compile
+SDKVERSION = 14.5
+SYSROOT = $(THEOS)/sdks/iPhoneOS14.5.sdk
+
+TARGET := iphone:clang:latest:14.5
 INSTALL_TARGET_PROCESSES = SpringBoard
 
 
@@ -10,6 +14,8 @@ BHInsta_FILES = Tweak.x $(wildcard *.m JGProgressHUD/*.m)
 BHInsta_FRAMEWORKS = UIKit Foundation CoreGraphics Photos CoreServices SystemConfiguration SafariServices Security QuartzCore
 BHInsta_PRIVATE_FRAMEWORKS = Preferences
 BHInsta_EXTRA_FRAMEWORKS = Cephei CepheiPrefs CepheiUI
-BHInsta_CFLAGS = -fobjc-arc -Wno-unused-variable -Wno-unused-value -Wno-deprecated-declarations -Wno-nullability-completeness -Wno-unused-function -Wno-incompatible-pointer-types
+BHInsta_CFLAGS = -fobjc-arc -Wno-unsupported-availability-guard -Wno-unused-value -Wno-deprecated-declarations -Wno-nullability-completeness -Wno-unused-function -Wno-incompatible-pointer-types
 
 include $(THEOS_MAKE_PATH)/tweak.mk
+
+SUBPROJECTS += libflex keychainfix

@@ -17,8 +17,20 @@
 + (BOOL)showLikeCount {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"show_like_count"];
 }
-+ (BOOL)likeConfirmation {
++ (BOOL)postLikeConfirmation {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"like_confirm"];
+}
++ (BOOL)reelsLikeConfirmation {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"like_confirm_reels"];
+}
++ (BOOL)followConfirmation {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"follow_confirm"];
+}
++ (BOOL)callConfirmation {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"call_confirm"];
+}
++ (BOOL)postCommentConfirmation {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"post_comment_confirm"];
 }
 + (BOOL)copyDecription {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"copy_description"];
@@ -40,6 +52,9 @@
 }
 + (BOOL)noSeenReceipt {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"no_seen_receipt"];
+}
++ (BOOL)FLEX {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"flex_instagram"];
 }
 + (void)cleanCache {
     NSArray <NSURL *> *DocumentFiles = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:[NSURL fileURLWithPath:NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, true).firstObject] includingPropertiesForKeys:@[] options:NSDirectoryEnumerationSkipsHiddenFiles error:nil];

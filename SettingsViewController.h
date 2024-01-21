@@ -5,6 +5,7 @@
 //  Created by BandarHelal on 25/11/2021.
 //
 
+#import <objc/runtime.h>
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import <CepheiPrefs/CepheiPrefs.h>
@@ -14,12 +15,13 @@
 #import <Preferences/PSEditableTableCell.h>
 #import <Preferences/PSSwitchTableCell.h>
 #import "BHTBundle.h"
+#import "InstagramHeaders.h"
 
 typedef NS_ENUM(NSInteger, DynamicSpecifierOperatorType) {
-  EqualToOperatorType,
-  NotEqualToOperatorType,
-  GreaterThanOperatorType,
-  LessThanOperatorType,
+    EqualToOperatorType,
+    NotEqualToOperatorType,
+    GreaterThanOperatorType,
+    LessThanOperatorType,
 };
 
 @interface SettingsViewController : HBListController

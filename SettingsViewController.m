@@ -89,16 +89,23 @@
     if (!_specifiers) {
         
         PSSpecifier *feedSection = [self newSectionWithTitle:@"Feed" footer:nil];
+        PSSpecifier *confirmsSection = [self newSectionWithTitle:@"Confirm actions" footer:nil];
         PSSpecifier *mediaSection = [self newSectionWithTitle:@"Save media" footer:nil];
         PSSpecifier *storySection = [self newSectionWithTitle:@"Story and direct" footer:nil];
         PSSpecifier *securitySection = [self newSectionWithTitle:@"Security" footer:nil];
+        PSSpecifier *debug = [self newSectionWithTitle:@"Debugging" footer:nil];
         PSSpecifier *developer = [self newSectionWithTitle:@"Developer" footer:nil];
         
         PSSpecifier *hideAds = [self newSwitchCellWithTitle:@"Hide Ads" detailTitle:@"Remove all Ads from Instagram app" key:@"hide_ads" defaultValue:true changeAction:nil];
-        PSSpecifier *noSuggestedPost = [self newSwitchCellWithTitle:@"No suggested post" detailTitle:@"Remove suggested posts from the feed" key:@"no_suggested_post" defaultValue:false changeAction:nil];
         PSSpecifier *showLikeCount = [self newSwitchCellWithTitle:@"Show Like count" detailTitle:@"Show like count in the post" key:@"show_like_count" defaultValue:true changeAction:nil];
-        PSSpecifier *likeConfirmation = [self newSwitchCellWithTitle:@"Confirm like" detailTitle:@"Show alert when you click the like button to confirm the like" key:@"like_confirm" defaultValue:false changeAction:nil];
         PSSpecifier *copyDecription = [self newSwitchCellWithTitle:@"Copy description" detailTitle:@"Copy the post description by long press" key:@"copy_description" defaultValue:true changeAction:nil];
+        PSSpecifier *noSuggestedPost = [self newSwitchCellWithTitle:@"No suggested posts" detailTitle:@"Remove suggested posts from the feed" key:@"no_suggested_post" defaultValue:false changeAction:nil];
+        
+        PSSpecifier *postLikeConfirmation = [self newSwitchCellWithTitle:@"Confirm like: Posts" detailTitle:@"Shows an alert when you click the like button on posts to confirm the like" key:@"like_confirm" defaultValue:false changeAction:nil];
+        PSSpecifier *reelsLikeConfirmation = [self newSwitchCellWithTitle:@"Confirm like: Reels" detailTitle:@"Shows an alert when you click the like button on reels to confirm the like" key:@"like_confirm_reels" defaultValue:false changeAction:nil];
+        PSSpecifier *followConfirmation = [self newSwitchCellWithTitle:@"Confirm follow" detailTitle:@"Shows an alert when you click the follow button to confirm the follow" key:@"follow_confirm" defaultValue:false changeAction:nil];
+        PSSpecifier *callConfirmation = [self newSwitchCellWithTitle:@"Confirm call" detailTitle:@"Shows an alert when you click the audio/video call button to confirm before calling" key:@"call_confirm" defaultValue:false changeAction:nil];
+        PSSpecifier *postCommentConfirmation = [self newSwitchCellWithTitle:@"Confirm posting comment" detailTitle:@"Shows an alert when you click the post comment button to confirm" key:@"post_comment_confirm" defaultValue:false changeAction:nil];
 
         PSSpecifier *downloadVid = [self newSwitchCellWithTitle:@"Download Videos" detailTitle:@"Download Videos by log press in any video you want." key:@"dw_videos" defaultValue:true changeAction:nil];
         PSSpecifier *profileSave = [self newSwitchCellWithTitle:@"Save profile image" detailTitle:@"Save profile image by long press." key:@"save_profile" defaultValue:true changeAction:nil];
@@ -111,6 +118,9 @@
 
         PSSpecifier *appLock = [self newSwitchCellWithTitle:@"Padlock" detailTitle:@"Lock Instagram with passcode" key:@"padlock" defaultValue:false changeAction:nil];
 
+        // debug section
+        PSSpecifier *flex = [self newSwitchCellWithTitle:@"Enable FLEX" detailTitle:@"Show FLEX on instagram app." key:@"flex_instagram" defaultValue:false changeAction:@selector(FLEXAction:)];
+
         // dvelopers section
         PSSpecifier *bandarHL = [self newHBTwitterCellWithTitle:@"BandarHelal" twitterUsername:@"BandarHL" customAvatarURL:@"https://unavatar.io/twitter/BandarHL"];
         PSSpecifier *tipJar = [self newHBLinkCellWithTitle:@"Tip Jar" detailTitle:@"Donate Via Paypal" url:@"https://www.paypal.me/BandarHL"];
@@ -119,26 +129,35 @@
             
             feedSection, // 1
             hideAds,
-            noSuggestedPost,
             showLikeCount,
-            likeConfirmation,
             copyDecription,
+            noSuggestedPost,
 
-            mediaSection, // 2
+            confirmsSection, // 2
+            postLikeConfirmation,
+            reelsLikeConfirmation,
+            followConfirmation,
+            callConfirmation,
+            postCommentConfirmation,
+
+            mediaSection, // 3
             downloadVid,
             profileSave,
 
-            storySection, // 3
+            storySection, // 4
             keepDelMessage,
             hideLastSeen,
             noScreenShotAlert,
             unlimtedReply,
             noStorySeenReceipt,
 
-            securitySection, // 4
+            securitySection, // 5
             appLock,
             
-            developer, // 5
+            debug, // 6
+            flex,
+
+            developer, // 7
             bandarHL,
             tipJar,
         ]];
@@ -277,11 +296,11 @@
 }
 
 - (void)FLEXAction:(UISwitch *)sender {
-    // if (sender.isOn) {
-    //     [[objc_getClass("FLEXManager") sharedManager] showExplorer];
-    // } else {
-    //     [[objc_getClass("FLEXManager") sharedManager] hideExplorer];
-    // }
+    if (sender.isOn) {
+        [[objc_getClass("FLEXManager") sharedManager] showExplorer];
+    } else {
+        [[objc_getClass("FLEXManager") sharedManager] hideExplorer];
+    }
 }
 @end
 

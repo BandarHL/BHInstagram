@@ -1,13 +1,17 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface BHIManager: NSObject
+@interface BHIManager : NSObject
 + (BOOL)hideAds;
 + (BOOL)downloadVideos;
 + (BOOL)profileImageSave;
 + (BOOL)removeSuggestedPost;
 + (BOOL)showLikeCount;
-+ (BOOL)likeConfirmation;
++ (BOOL)postLikeConfirmation;
++ (BOOL)reelsLikeConfirmation;
++ (BOOL)followConfirmation;
++ (BOOL)callConfirmation;
++ (BOOL)postCommentConfirmation;
 + (BOOL)copyDecription;
 + (BOOL)Padlock;
 + (BOOL)keepDeletedMessage;
@@ -15,6 +19,7 @@
 + (BOOL)noScreenShotAlert;
 + (BOOL)unlimtedReply;
 + (BOOL)noSeenReceipt;
++ (BOOL)FLEX;
 + (void)showSaveVC:(id)item;
 + (void)cleanCache;
 + (BOOL)isEmpty:(NSURL *)url;

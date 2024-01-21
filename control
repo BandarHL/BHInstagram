@@ -1,9 +1,9 @@
 Package: com.bandarhl.bhinsta
 Name: BHInsta
-Version: 0.0.1
+Version: 0.0.3
 Architecture: iphoneos-arm
-Description: An awesome tweak for Instagram!
-Maintainer: Bandar Alruwaili
+Description: An (even more) awesome tweak for Instagram!
+Maintainer: SoCuul
 Author: Bandar Alruwaili
 Section: Tweaks
 Depends: mobilesubstrate, ws.hbang.common
