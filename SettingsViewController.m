@@ -98,6 +98,7 @@
         PSSpecifier *noSuggestedPost = [self newSwitchCellWithTitle:@"No suggested post" detailTitle:@"Remove suggested posts from the feed" key:@"no_suggested_post" defaultValue:false changeAction:nil];
         PSSpecifier *showLikeCount = [self newSwitchCellWithTitle:@"Show Like count" detailTitle:@"Show like count in the post" key:@"show_like_count" defaultValue:true changeAction:nil];
         PSSpecifier *likeConfirmation = [self newSwitchCellWithTitle:@"Confirm like" detailTitle:@"Show alert when you click the like button to confirm the like" key:@"like_confirm" defaultValue:false changeAction:nil];
+        PSSpecifier *followConfirmation = [self newSwitchCellWithTitle:@"Confirm Follow" detailTitle:@"Show alert when you click the Follow button to confirm the Follow" key:@"follow_confirm" defaultValue:false changeAction:nil];
         PSSpecifier *copyDecription = [self newSwitchCellWithTitle:@"Copy description" detailTitle:@"Copy the post description by long press" key:@"copy_description" defaultValue:true changeAction:nil];
 
         PSSpecifier *downloadVid = [self newSwitchCellWithTitle:@"Download Videos" detailTitle:@"Download Videos by log press in any video you want." key:@"dw_videos" defaultValue:true changeAction:nil];
@@ -122,6 +123,7 @@
             noSuggestedPost,
             showLikeCount,
             likeConfirmation,
+            followConfirmation,
             copyDecription,
 
             mediaSection, // 2

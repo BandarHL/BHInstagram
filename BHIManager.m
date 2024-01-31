@@ -20,6 +20,9 @@
 + (BOOL)likeConfirmation {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"like_confirm"];
 }
++ (BOOL)followConfirmation; {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"follow_confirm"];
+}
 + (BOOL)copyDecription {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"copy_description"];
 }

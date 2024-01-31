@@ -182,10 +182,16 @@
  * For HD profile picture
  */
 @interface IGUser : NSObject
+@property NSInteger followStatus;
 @property(copy) NSString *username;
 @property BOOL followsCurrentUser;
 - (NSURL *)HDProfilePicURL;
 - (BOOL)isUser;
+
+@end
+
+@interface IGFollowController : NSObject 
+@property IGUser *user;
 @end
 
 @interface IGCoreTextView: UIView

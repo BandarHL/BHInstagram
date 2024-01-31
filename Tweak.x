@@ -219,6 +219,26 @@ static BOOL isAuthenticationShowed = FALSE;
 }
 %end
 
+
+// Follow Confirm 
+
+%hook IGFollowController
+-(void)_didPressFollowButton {
+	NSInteger UserFollowStatus = self.user.followStatus;
+  if ([BHIManager followConfirmation]) {
+      if (UserFollowStatus == 2){
+        showConfirmation(^(void) { %orig; });
+    }else {
+        %orig;
+      
+    }
+  }else {
+    return %orig;
+  }
+	
+}	
+%end
+
 // like confirm
 %hook IGUFIButtonBarView
 - (void)_onLikeButtonPressed:(id)arg1 {
