@@ -218,7 +218,29 @@ static BOOL isAuthenticationShowed = FALSE;
   }
 }
 %end
+// Copy Bio
 
+%hook IGProfileViewController
+
+-(void)bioSectionControllerDidLongPress:(id)arg1 {
+  if ([BHIManager copyBio]) {
+    IGProfileBioModel* bioModel = [self valueForKey:@"_bioModel"];
+    NSString* biography = [[bioModel user] biography];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"HI" preferredStyle:UIAlertControllerStyleAlert];
+	  UIAlertAction* copyButton = [UIAlertAction actionWithTitle:@"Copy Bio" style:UIAlertActionStyleDefault
+    handler:^(UIAlertAction * action) {
+
+      UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+      pasteboard.string = biography;
+    }];
+	  [alert addAction:copyButton];
+    [self presentViewController:alert animated:YES completion:nil];
+  }
+  return %orig;
+	
+
+}
+%end
 
 // Follow Confirm 
 
@@ -311,6 +333,8 @@ static BOOL isAuthenticationShowed = FALSE;
   }
 }
 %end
+
+
 
 // Hide Ads
 %hook IGMainFeedListAdapterDataSource

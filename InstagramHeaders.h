@@ -185,6 +185,7 @@
 @property NSInteger followStatus;
 @property(copy) NSString *username;
 @property BOOL followsCurrentUser;
+@property NSString *biography;
 - (NSURL *)HDProfilePicURL;
 - (BOOL)isUser;
 

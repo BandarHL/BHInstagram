@@ -26,6 +26,9 @@
 + (BOOL)copyDecription {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"copy_description"];
 }
++ (BOOL)copyBio {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"copy_bio"];
+}
 + (BOOL)Padlock {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"padlock"];
 }

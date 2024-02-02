@@ -100,7 +100,7 @@
         PSSpecifier *likeConfirmation = [self newSwitchCellWithTitle:@"Confirm like" detailTitle:@"Show alert when you click the like button to confirm the like" key:@"like_confirm" defaultValue:false changeAction:nil];
         PSSpecifier *followConfirmation = [self newSwitchCellWithTitle:@"Confirm Follow" detailTitle:@"Show alert when you click the Follow button to confirm the Follow" key:@"follow_confirm" defaultValue:false changeAction:nil];
         PSSpecifier *copyDecription = [self newSwitchCellWithTitle:@"Copy description" detailTitle:@"Copy the post description by long press" key:@"copy_description" defaultValue:true changeAction:nil];
-
+        PSSpecifier *copyBio = [self newSwitchCellWithTitle:@"Copy Profile Bio" detailTitle:@"Copy the Profile Bio by long press on Bio" key:@"copy_bio" defaultValue:true changeAction:nil];
         PSSpecifier *downloadVid = [self newSwitchCellWithTitle:@"Download Videos" detailTitle:@"Download Videos by log press in any video you want." key:@"dw_videos" defaultValue:true changeAction:nil];
         PSSpecifier *profileSave = [self newSwitchCellWithTitle:@"Save profile image" detailTitle:@"Save profile image by long press." key:@"save_profile" defaultValue:true changeAction:nil];
 
@@ -125,6 +125,7 @@
             likeConfirmation,
             followConfirmation,
             copyDecription,
+            copyBio,
 
             mediaSection, // 2
             downloadVid,
