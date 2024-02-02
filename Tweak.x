@@ -301,6 +301,16 @@ static BOOL isAuthenticationShowed = FALSE;
   }
 }
 %end
+// Like Confirm For Reels :) 
+%hook IGSundialViewerVerticalUFI 
+-(void)_didTapLikeButton:(id)arg1 {
+	if ([BHIManager likeConfirmation]) {
+    showConfirmation(^(void) { %orig; });
+  } else {
+    return %orig;
+  }
+}
+%end
 
 // Hide Ads
 %hook IGMainFeedListAdapterDataSource
