@@ -250,8 +250,18 @@ static BOOL isAuthenticationShowed = FALSE;
     }
 }
 %end
+// No longer works on latest app version
 %hook IGFeedItemVideoView
 - (void)_handleOverlayDoubleTap {
+    if ([BHIManager postLikeConfirmation]) {
+        showConfirmation(^(void) { %orig; });
+    } else {
+        return %orig;
+    }
+}
+%end
+%hook IGModernFeedVideoCell
+- (void)videoPlayerOverlayControllerDidDoubleTap:(id)arg1 locationInfo:(id)arg2 {
     if ([BHIManager postLikeConfirmation]) {
         showConfirmation(^(void) { %orig; });
     } else {
