@@ -1,8 +1,8 @@
 Package: com.bandarhl.bhinsta
 Name: BHInsta
-Version: 0.0.4
+Version: 0.1.0
 Architecture: iphoneos-arm
-Description: An (even more) awesome tweak for Instagram!
+Description: A feature-rich tweak for Instagram on iOS!
 Maintainer: SoCuul
 Author: Bandar Alruwaili
 Section: Tweaks

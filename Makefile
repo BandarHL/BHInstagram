@@ -1,16 +1,11 @@
-# SoCuul: Had to add these to get it to compile
-SDKVERSION = 14.5
-SYSROOT = $(THEOS)/sdks/iPhoneOS14.5.sdk
-
-TARGET := iphone:clang:latest:14.5
+TARGET := iphone:clang:14.0
 INSTALL_TARGET_PROCESSES = SpringBoard
-
 
 include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = BHInsta
 
-BHInsta_FILES = Tweak.x $(wildcard *.m JGProgressHUD/*.m)
+BHInsta_FILES = src/Tweak.x $(wildcard *.m modules/JGProgressHUD/*.m)
 BHInsta_FRAMEWORKS = UIKit Foundation CoreGraphics Photos CoreServices SystemConfiguration SafariServices Security QuartzCore
 BHInsta_PRIVATE_FRAMEWORKS = Preferences
 BHInsta_EXTRA_FRAMEWORKS = Cephei CepheiPrefs CepheiUI

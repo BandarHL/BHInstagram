@@ -1,0 +1,11 @@
+{
+    "editor.tabSize": 4,
+    "editor.insertSpaces": true,
+    "editor.trimAutoWhitespace": true,
+    "editor.formatOnSave": false,
+    "files.associations": {
+        "*.x": "objective-c",
+        "*.m": "objective-c",
+        "*.h": "objective-c"
+    }
+}
