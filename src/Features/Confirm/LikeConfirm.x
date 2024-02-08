@@ -110,3 +110,21 @@
     }
 }
 %end
+
+// Liking stories
+%hook IGStoryFullscreenDefaultFooterView
+- (void)_likeTapped {
+    if ([BHIManager postLikeConfirmation]) {
+        showConfirmation(^(void) { %orig; });
+    } else {
+        return %orig;
+    }
+}
+- (void)inputView:(id)arg1 didTapLikeButton:(id)arg2 {
+    if ([BHIManager postLikeConfirmation]) {
+        showConfirmation(^(void) { %orig; });
+    } else {
+        return %orig;
+    }
+}
+%end

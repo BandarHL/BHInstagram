@@ -10,6 +10,10 @@
 - (void)_superPresentViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(id)completion;
 @end
 
+@interface IGMainFeedAppHeaderController: UIViewController
+- (void)_superPresentViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(id)completion; // new
+@end
+
 @interface IGProfileMenuSheetViewController: IGViewController
 @end
 
@@ -80,7 +84,7 @@
 @interface IGProfilePicturePreviewViewController () <BHIDownloadDelegate>
 @end
 
-@interface IGFeedItemMediaCell : UICollectionViewCell
+@interface IGFeedItemMediaCell: UICollectionViewCell
 @property(retain, nonatomic) IGMedia *post;
 - (UIImage *)mediaCellCurrentlyDisplayedImage;
 @end

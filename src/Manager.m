@@ -14,6 +14,9 @@
 + (BOOL)removeSuggestedPost {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"no_suggested_post"];
 }
++ (BOOL)removeSuggestedAccounts {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"no_suggested_account"];
+}
 + (BOOL)showLikeCount {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"show_like_count"];
 }

@@ -67,6 +67,13 @@
     }
     return HBLinkCell;
 }
+- (PSSpecifier *)newHBButtonCellWithTitle:(NSString *)titleText action:(SEL)action {
+    PSSpecifier *HBButtonCell = [PSSpecifier preferenceSpecifierNamed:titleText target:self set:@selector(setPreferenceValue:specifier:) get:@selector(readPreferenceValue:) detail:nil cell:PSButtonCell edit:nil];
+    
+    [HBButtonCell setButtonAction:@selector(action:)];
+    [HBButtonCell setProperty:HBTintedTableCell.class forKey:@"cellClass"];
+    return HBButtonCell;
+}
 - (PSSpecifier *)newHBTwitterCellWithTitle:(NSString *)titleText twitterUsername:(NSString *)user customAvatarURL:(NSString *)avatarURL {
     PSSpecifier *TwitterCell = [PSSpecifier preferenceSpecifierNamed:titleText target:self set:@selector(setPreferenceValue:specifier:) get:@selector(readPreferenceValue:) detail:nil cell:1 edit:nil];
     
@@ -83,13 +90,14 @@
         _specifiers = [NSMutableArray arrayWithArray:@[
             // Section 1: General
             [self newSectionWithTitle:@"General" footer:nil],
-            [self newSwitchCellWithTitle:@"Hide Ads" detailTitle:@"Remove all ads from the Instagram app" key:@"hide_ads" defaultValue:true changeAction:nil],
             [self newSwitchCellWithTitle:@"Show Like count" detailTitle:@"Show like count in the post" key:@"show_like_count" defaultValue:true changeAction:nil],
             [self newSwitchCellWithTitle:@"Copy description" detailTitle:@"Copy the post description with a long press" key:@"copy_description" defaultValue:true changeAction:nil],
             
             // Section 2: Feed
             [self newSectionWithTitle:@"Feed" footer:nil],
+            [self newSwitchCellWithTitle:@"Hide Ads" detailTitle:@"Remove all ads from the Instagram app" key:@"hide_ads" defaultValue:true changeAction:nil],
             [self newSwitchCellWithTitle:@"No suggested posts" detailTitle:@"Remove suggested posts from your feed" key:@"no_suggested_post" defaultValue:false changeAction:nil],
+            [self newSwitchCellWithTitle:@"No suggested for you" detailTitle:@"Hide suggested accounts for you to follow" key:@"no_suggested_account" defaultValue:false changeAction:nil],
             
             // Section 3: Confirm actions
             [self newSectionWithTitle:@"Confirm actions" footer:nil],
@@ -119,6 +127,7 @@
             // Section 7: Debugging
             [self newSectionWithTitle:@"Debugging" footer:nil],
             [self newSwitchCellWithTitle:@"Enable FLEX" detailTitle:@"Show FLEX on instagram app." key:@"flex_instagram" defaultValue:false changeAction:@selector(FLEXAction:)],
+            /* [self newHBButtonCellWithTitle:@"Clear cache" action:@selector(_clearCache:)], */
 
             // Section 8: Credits
             [self newSectionWithTitle:@"Credits" footer:nil],
@@ -132,6 +141,47 @@
     
     return _specifiers;
 }
+
+- (void)_clearCache {
+    JGProgressHUD *HUD = [[JGProgressHUD alloc] init];
+    HUD.textLabel.text = @"Wowza.";
+    HUD.indicatorView = [[JGProgressHUDErrorIndicatorView alloc] init];
+    [HUD showInView:topMostController().view];
+    [HUD dismissAfterDelay:2.0];
+
+    NSFileManager *fileManager = [NSFileManager defaultManager];  
+    NSString *directoryPath = [NSHomeDirectory() stringByAppendingString:@"/Documents/Library/Caches/"];
+
+    if ([fileManager fileExistsAtPath:directoryPath]) {
+        NSDirectoryEnumerator *dirEnum = [fileManager enumeratorAtPath:directoryPath];
+        NSString *documentsName;
+        while (documentsName = [dirEnum nextObject]) {
+            NSString *filePath = [directoryPath stringByAppendingString:documentsName];
+            BOOL isFileDeleted = [fileManager removeItemAtPath:filePath error:nil];
+            if (isFileDeleted == NO) {
+
+                // Not all files were removed (error)
+                JGProgressHUD *HUD = [[JGProgressHUD alloc] init];
+                HUD.textLabel.text = @"Could not clear cache.";
+                HUD.indicatorView = [[JGProgressHUDErrorIndicatorView alloc] init];
+                [HUD showInView:topMostController().view];
+                [HUD dismissAfterDelay:2.0];
+
+                NSLog(@"Error clearing cache!");
+                break;
+
+            }
+        }
+
+        // Success
+        JGProgressHUD *HUD = [[JGProgressHUD alloc] init];
+        HUD.textLabel.text = @"Cache has been cleared!";
+        HUD.indicatorView = [[JGProgressHUDSuccessIndicatorView alloc] init];
+        [HUD showInView:topMostController().view];
+        [HUD dismissAfterDelay:2.0];
+    }
+}
+
 - (void)reloadSpecifiers {
     [super reloadSpecifiers];
     

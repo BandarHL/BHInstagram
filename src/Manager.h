@@ -6,6 +6,7 @@
 + (BOOL)downloadVideos;
 + (BOOL)profileImageSave;
 + (BOOL)removeSuggestedPost;
++ (BOOL)removeSuggestedAccounts;
 + (BOOL)showLikeCount;
 + (BOOL)postLikeConfirmation;
 + (BOOL)reelsLikeConfirmation;

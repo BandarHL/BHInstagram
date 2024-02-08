@@ -4,6 +4,7 @@
 static NSArray *removeAdsItemsInList(NSArray *list) {
     NSMutableArray *orig = [list mutableCopy];
     [orig enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+        // Remove suggested posts
         if ([BHIManager removeSuggestedPost]) {
             if ([obj respondsToSelector:@selector(explorePostInFeed)] && [obj performSelector:@selector(explorePostInFeed)]) {
                 [orig removeObjectAtIndex:idx];
@@ -17,6 +18,7 @@ static NSArray *removeAdsItemsInList(NSArray *list) {
     return [orig copy];
 }
 
+// Suggested posts
 %hook IGMainFeedListAdapterDataSource
 - (NSArray *)objectsForListAdapter:(id)arg1 {
     if ([BHIManager hideAds]) {
