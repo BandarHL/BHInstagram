@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title displayed in the navigation bar of the support page. -->
+	<key>SUPPORT_TITLE</key>
+	<string>Támogatás</string>
+
+	<!-- The subject used when sending a support email. %@ %@ is the package name and version respectively. -->
+	<key>SUPPORT_EMAIL_SUBJECT</key>
+	<string>%@ %@ – Támogatás</string>
+</dict>
+</plist>

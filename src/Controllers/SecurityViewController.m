@@ -11,7 +11,7 @@
     [self.view addSubview:blurView];
     
     UIButton *authenticateButton = [[UIButton alloc] initWithFrame:CGRectMake(20, 20, 200, 60)];
-    [authenticateButton setTitle:@"Authenticate" forState:UIControlStateNormal];
+    [authenticateButton setTitle:@"Click to unlock app" forState:UIControlStateNormal];
     authenticateButton.center = self.view.center;
     [authenticateButton addTarget:self action:@selector(authenticateButtonTapped:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:authenticateButton];

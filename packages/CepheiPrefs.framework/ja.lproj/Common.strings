@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Buttons leading to, and titles of, sub-sections. -->
+	<key>ABOUT</key>
+	<string>情報</string>
+	<key>CREDITS</key>
+	<string>クレジット</string>
+	<key>GENERAL</key>
+	<string>一般</string>
+	<key>SUPPORT</key>
+	<string>サポート</string>
+
+	<!-- Label for switch to enable or disable the tweak. -->
+	<key>ENABLED</key>
+	<string>使用する</string>
+
+	<!-- Label for the state of a switch.-->
+	<key>OFF</key>
+	<string>オフ</string>
+	<key>ON</key>
+	<string>オン</string>
+
+	<!-- Button leading to a website. -->
+	<key>VISIT_WEBSITE</key>
+	<string>ウェブサイトを開く</string>
+
+	<!-- Heading above the "Email Support" button. -->
+	<key>EMAIL_SUPPORT_HEADER</key>
+	<string>問題がありますか？</string>
+
+	<!-- Button leading to a contact form. -->
+	<key>EMAIL_SUPPORT</key>
+	<string>メールサポート</string>
+
+	<!-- Button leading to a donation page. -->
+	<key>DONATE</key>
+	<string>寄付する</string>
+
+	<!-- Footer under the donate button. -->
+	<key>DONATE_FOOTER</key>
+	<string>このTweakへの感謝を表現するために寄付をご検討ください。</string>
+
+	<!-- Headings above the credits. -->
+	<key>DEVELOPER</key>
+	<string>開発者</string>
+	<key>DEVELOPERS</key>
+	<string>開発者</string>
+	<key>LEAD_DEVELOPER</key>
+	<string>リード開発者</string>
+	<key>DESIGNER</key>
+	<string>デザイナー</string>
+	<key>DESIGNERS</key>
+	<string>デザイナー</string>
+	<key>ICON</key>
+	<string>アイコン</string>
+	<key>ICONS</key>
+	<string>アイコン</string>
+	<key>TRANSLATORS</key>
+	<string>翻訳者</string>
+	
+	<!-- Title of a prompt that allows typing in a value. -->
+	<key>ENTER_VALUE</key>
+	<string>値を入力</string>
+</dict>
+</plist>

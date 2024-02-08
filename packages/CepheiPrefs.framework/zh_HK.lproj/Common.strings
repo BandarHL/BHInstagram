@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Buttons leading to, and titles of, sub-sections. -->
+	<key>ABOUT</key>
+	<string>關於</string>
+	<key>CREDITS</key>
+	<string>參與人員</string>
+	<key>GENERAL</key>
+	<string>一般</string>
+	<key>SUPPORT</key>
+	<string>支援</string>
+
+	<!-- Label for switch to enable or disable the tweak. -->
+	<key>ENABLED</key>
+	<string>啟用</string>
+
+	<!-- Label for the state of a switch.-->
+	<key>OFF</key>
+	<string>關閉</string>
+	<key>ON</key>
+	<string>開啟</string>
+
+	<!-- Button leading to a website. -->
+	<key>VISIT_WEBSITE</key>
+	<string>訪問網站</string>
+
+	<!-- Heading above the "Email Support" button. -->
+	<key>EMAIL_SUPPORT_HEADER</key>
+	<string>遇到問題了？</string>
+
+	<!-- Button leading to a contact form. -->
+	<key>EMAIL_SUPPORT</key>
+	<string>電郵支援</string>
+
+	<!-- Button leading to a donation page. -->
+	<key>DONATE</key>
+	<string>捐贈</string>
+
+	<!-- Footer under the donate button. -->
+	<key>DONATE_FOOTER</key>
+	<string>請考慮用捐贈來表達您對此插件的感謝。</string>
+
+	<!-- Headings above the credits. -->
+	<key>DEVELOPER</key>
+	<string>開發者</string>
+	<key>DEVELOPERS</key>
+	<string>開發者</string>
+	<key>LEAD_DEVELOPER</key>
+	<string>主要開發者</string>
+	<key>DESIGNER</key>
+	<string>設計者</string>
+	<key>DESIGNERS</key>
+	<string>設計者</string>
+	<key>ICON</key>
+	<string>圖標</string>
+	<key>ICONS</key>
+	<string>圖標</string>
+	<key>TRANSLATORS</key>
+	<string>翻譯人員</string>
+</dict>
+</plist>

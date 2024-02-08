@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Buttons leading to, and titles of, sub-sections. -->
+	<key>ABOUT</key>
+	<string>के बारे में</string>
+	<key>CREDITS</key>
+	<string>क्रेडिट्स</string>
+	<key>GENERAL</key>
+	<string>सामान्य</string>
+	<key>SUPPORT</key>
+	<string>समर्थन</string>
+
+	<!-- Label for switch to enable or disable the tweak. -->
+	<key>ENABLED</key>
+	<string>सक्षम किया</string>
+
+	<!-- Label for the state of a switch.-->
+	<key>OFF</key>
+	<string>बंद</string>
+	<key>ON</key>
+	<string>चालू</string>
+
+	<!-- Button leading to a website. -->
+	<key>VISIT_WEBSITE</key>
+	<string>बेवसाइट देखना</string>
+
+	<!-- Heading above the "Email Support" button. -->
+	<key>EMAIL_SUPPORT_HEADER</key>
+	<string>समस्याएं आ रही हैं?</string>
+
+	<!-- Button leading to a contact form. -->
+	<key>EMAIL_SUPPORT</key>
+	<string>ई - मेल समर्थन</string>
+
+	<!-- Button leading to a donation page. -->
+	<key>DONATE</key>
+	<string>दान</string>
+
+	<!-- Footer under the donate button. -->
+	<key>DONATE_FOOTER</key>
+	<string>एक दान के साथ इस tweak के लिए अपनी प्रशंसा दिखा पर विचार करें।</string>
+
+	<!-- Headings above the credits. -->
+	<key>DEVELOPER</key>
+	<string>डेवलपर</string>
+	<key>DEVELOPERS</key>
+	<string>डेवलपर्स</string>
+	<key>LEAD_DEVELOPER</key>
+	<string>प्रमुख डेवलपर</string>
+	<key>DESIGNER</key>
+	<string>डिजाइनर</string>
+	<key>DESIGNERS</key>
+	<string>डिजाइनर</string>
+	<key>ICON</key>
+	<string>चिह्न</string>
+	<key>ICONS</key>
+	<string>प्रतीक</string>
+	<key>TRANSLATORS</key>
+	<string>अनुवादक</string>
+
+	<!-- Title of a prompt that allows typing in a value. -->
+	<key>ENTER_VALUE</key>
+	<string> मूल्य दर्ज करें</string>
+</dict>
+</plist>

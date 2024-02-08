@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Buttons leading to, and titles of, sub-sections. -->
+	<key>ABOUT</key>
+	<string>Tentang</string>
+	<key>CREDITS</key>
+	<string>Kredit</string>
+	<key>GENERAL</key>
+	<string>Umum</string>
+	<key>SUPPORT</key>
+	<string>Bantuan</string>
+
+	<!-- Label for switch to enable or disable the tweak. -->
+	<key>ENABLED</key>
+	<string>Membolehkan</string>
+
+	<!-- Label for the state of a switch.-->
+	<key>OFF</key>
+	<string>Mati</string>
+	<key>ON</key>
+	<string>Aktif</string>
+
+	<!-- Button leading to a website. -->
+	<key>VISIT_WEBSITE</key>
+	<string>Lawati Laman Web</string>
+
+	<!-- Heading above the "Email Support" button. -->
+	<key>EMAIL_SUPPORT_HEADER</key>
+	<string>Ada Masalah?</string>
+
+	<!-- Button leading to a contact form. -->
+	<key>EMAIL_SUPPORT</key>
+	<string>Bantuan Emel</string>
+
+	<!-- Button leading to a donation page. -->
+	<key>DONATE</key>
+	<string>Balang Derma</string>
+
+	<!-- Footer under the donate button. -->
+	<key>DONATE_FOOTER</key>
+	<string>Sila pertimbangkan untuk memberi penghargaan untuk tweak ini dengan memberi sejumlah derma di balang derma.</string>
+
+	<!-- Headings above the credits. -->
+	<key>DEVELOPER</key>
+	<string>Pembuat</string>
+	<key>DEVELOPERS</key>
+	<string>Pembuat-pembuat</string>
+	<key>LEAD_DEVELOPER</key>
+	<string>Ketua Pembuat</string>
+	<key>DESIGNER</key>
+	<string>Pereka</string>
+	<key>DESIGNERS</key>
+	<string>Pereka-pereka</string>
+	<key>ICON</key>
+	<string>Ikon</string>
+	<key>ICONS</key>
+	<string>Ikon-ikon</string>
+	<key>TRANSLATORS</key>
+	<string>Penterjemah</string>
+
+	<!-- Title of a prompt that allows typing in a value. -->
+	<key>ENTER_VALUE</key>
+	<string>Masukan nilai</string>
+</dict>
+</plist>

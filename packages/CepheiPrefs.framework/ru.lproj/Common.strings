@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- Buttons leading to, and titles of, sub-sections. -->
+    <key>ABOUT</key>
+    <string>О программе</string>
+    <key>CREDITS</key>
+    <string>Титры</string>
+    <key>GENERAL</key>
+    <string>Основные</string>
+    <key>SUPPORT</key>
+    <string>поддержка</string>
+
+    <!-- Label for switch to enable or disable the tweak. -->
+    <key>ENABLED</key>
+    <string>Включить</string>
+
+    <!-- Label for the state of a switch.-->
+    <key>OFF</key>
+    <string>Выкл.</string>
+    <key>ON</key>
+    <string>Вкл.</string>
+
+    <!-- Button leading to a website. -->
+    <key>VISIT_WEBSITE</key>
+    <string>Посетить сайт</string>
+
+    <!-- Heading above the "Email Support" button. -->
+    <key>EMAIL_SUPPORT_HEADER</key>
+    <string>Что-то не так?</string>
+
+    <!-- Button leading to a contact form. -->
+    <key>EMAIL_SUPPORT</key>
+    <string>Свяжитесь с разработчиком</string>
+
+    <!-- Button leading to a donation page. -->
+    <key>DONATE</key>
+    <string>Пожертвовать</string>
+
+    <!-- Footer under the donate button. -->
+    <key>DONATE_FOOTER</key>
+    <string>Выразите свою благодарность данному твику небольшим пожертвованием.</string>
+
+    <!-- Headings above the credits. -->
+    <key>DEVELOPER</key>
+    <string>Разработчик</string>
+    <key>DEVELOPERS</key>
+    <string>Разработчики</string>
+    <key>LEAD_DEVELOPER</key>
+    <string>Главный разработчик</string>
+    <key>DESIGNER</key>
+    <string>Дизайнер</string>
+    <key>DESIGNERS</key>
+    <string>Дизайнеры</string>
+    <key>ICON</key>
+    <string>Значок</string>
+    <key>ICONS</key>
+    <string>Графика</string>
+    <key>TRANSLATORS</key>
+    <string>Переводчики</string>
+
+    <!-- Title of a prompt that allows typing in a value. -->
+    <key>ENTER_VALUE</key>
+    <string>Введите значение</string>
+</dict>
+</plist>

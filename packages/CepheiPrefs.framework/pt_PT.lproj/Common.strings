@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Buttons leading to, and titles of, sub-sections. -->
+	<key>ABOUT</key>
+	<string>Sobre</string>
+	<key>CREDITS</key>
+	<string>Créditos</string>
+	<key>GENERAL</key>
+	<string>Geral</string>
+	<key>SUPPORT</key>
+	<string>Suporte</string>
+
+	<!-- Label for switch to enable or disable the tweak. -->
+	<key>ENABLED</key>
+	<string>Ativo</string>
+
+	<!-- Label for the state of a switch.-->
+	<key>OFF</key>
+	<string>Desligado</string>
+	<key>ON</key>
+	<string>Ligado</string>
+
+	<!-- Button leading to a website. -->
+	<key>VISIT_WEBSITE</key>
+	<string>Visitar website</string>
+
+	<!-- Heading above the "Email Support" button. -->
+	<key>EMAIL_SUPPORT_HEADER</key>
+	<string>Havendo problemas?</string>
+
+	<!-- Button leading to a contact form. -->
+	<key>EMAIL_SUPPORT</key>
+	<string>Suporte via e-mail</string>
+
+	<!-- Button leading to a donation page. -->
+	<key>DONATE</key>
+	<string>Doar</string>
+
+	<!-- Footer under the donate button. -->
+	<key>DONATE_FOOTER</key>
+	<string>Por favor considere demonstrar sua apreciação pelo tweak por doação.</string>
+
+	<!-- Headings above the credits. -->
+	<key>DEVELOPER</key>
+	<string>Desenvolvedor</string>
+	<key>DEVELOPERS</key>
+	<string>Desenvolvedores</string>
+	<key>LEAD_DEVELOPER</key>
+	<string>Desenvolvedor Líder</string>
+	<key>DESIGNER</key>
+	<string>Designer</string>
+	<key>DESIGNERS</key>
+	<string>Designers</string>
+	<key>ICON</key>
+	<string>Ícone</string>
+	<key>ICONS</key>
+	<string>Ícones</string>
+	<key>TRANSLATORS</key>
+	<string>Tradutores</string>
+
+	<!-- Title of a prompt that allows typing in a value. -->
+	<key>ENTER_VALUE</key>
+	<string>Digite valor</string>
+</dict>
+</plist>

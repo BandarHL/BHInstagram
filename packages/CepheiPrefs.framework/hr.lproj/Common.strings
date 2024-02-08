@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Buttons leading to, and titles of, sub-sections. -->
+	<key>ABOUT</key>
+	<string>O Nama</string>
+	<key>CREDITS</key>
+	<string>Zasluge</string>
+	<key>GENERAL</key>
+	<string>Općenito</string>
+	<key>SUPPORT</key>
+	<string>Podrška</string>
+
+	<!-- Label for switch to enable or disable the tweak. -->
+	<key>ENABLED</key>
+	<string>Uključeno</string>
+
+	<!-- Label for the state of a switch.-->
+	<key>OFF</key>
+	<string>Isključeno</string>
+	<key>ON</key>
+	<string>Uključeno</string>
+
+	<!-- Button leading to a website. -->
+	<key>VISIT_WEBSITE</key>
+	<string>Posjeti Web Stranicu</string>
+
+	<!-- Heading above the "Email Support" button. -->
+	<key>EMAIL_SUPPORT_HEADER</key>
+	<string>Imaš Poteškoća?</string>
+
+	<!-- Button leading to a contact form. -->
+	<key>EMAIL_SUPPORT</key>
+	<string>Kontaktiraj Podršku</string>
+
+	<!-- Button leading to a donation page. -->
+	<key>DONATE</key>
+	<string>Doniraj</string>
+
+	<!-- Footer under the donate button. -->
+	<key>DONATE_FOOTER</key>
+	<string>Molimo pokažite zahvalnost za ovaj tweak donirajući.</string>
+
+	<!-- Headings above the credits. -->
+	<key>DEVELOPER</key>
+	<string>Programer</string>
+	<key>DEVELOPERS</key>
+	<string>Programeri</string>
+	<key>LEAD_DEVELOPER</key>
+	<string>Glavni Programer</string>
+	<key>DESIGNER</key>
+	<string>Dizajner</string>
+	<key>DESIGNERS</key>
+	<string>Dizajneri</string>
+	<key>ICON</key>
+	<string>Ikona</string>
+	<key>ICONS</key>
+	<string>Ikone</string>
+	<key>TRANSLATORS</key>
+	<string>Prevoditelji</string>
+
+	<!-- Title of a prompt that allows typing in a value. -->
+	<key>ENTER_VALUE</key>
+	<string>Unesi vrijednost</string>
+</dict>
+</plist>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Buttons leading to, and titles of, sub-sections. -->
+	<key>ABOUT</key>
+	<string>O aplikaci</string>
+	<key>CREDITS</key>
+	<string>Podìkování</string>
+	<key>GENERAL</key>
+	<string>Obecné</string>
+	<key>SUPPORT</key>
+	<string>Podpora</string>
+
+	<!-- Label for switch to enable or disable the tweak. -->
+	<key>ENABLED</key>
+	<string>Povoleno</string>
+
+	<!-- Label for the state of a switch.-->
+	<key>OFF</key>
+	<string>Vypnuto</string>
+	<key>ON</key>
+	<string>Zapnuto</string>
+
+	<!-- Button leading to a website. -->
+	<key>VISIT_WEBSITE</key>
+	<string>Navštívit stránku</string>
+
+	<!-- Heading above the "Email Support" button. -->
+	<key>EMAIL_SUPPORT_HEADER</key>
+	<string>Máte problémy?</string>
+
+	<!-- Button leading to a contact form. -->
+	<key>EMAIL_SUPPORT</key>
+	<string>E-Mailová podpora</string>
+
+	<!-- Button leading to a donation page. -->
+	<key>DONATE</key>
+	<string>Přispívání</string>
+
+	<!-- Footer under the donate button. -->
+	<key>DONATE_FOOTER</key>
+	<string>Poděkujte tomuto projektu přispěním do projektu.</string>
+
+	<!-- Headings above the credits. -->
+	<key>DEVELOPER</key>
+	<string>Vývojář</string>
+	<key>DEVELOPERS</key>
+	<string>Vývojáři</string>
+	<key>LEAD_DEVELOPER</key>
+	<string>Hlavní vývojář</string>
+	<key>DESIGNER</key>
+	<string>Designér</string>
+	<key>DESIGNERS</key>
+	<string>Designeři</string>
+	<key>ICON</key>
+	<string>Ikona</string>
+	<key>ICONS</key>
+	<string>Ikony</string>
+	<key>TRANSLATORS</key>
+	<string>Překladatelé</string>
+
+	<!-- Title of a prompt that allows typing in a value. -->
+	<key>ENTER_VALUE</key>
+	<string>Přidat hodnotu</string>
+</dict>
+</plist>

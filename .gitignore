@@ -41,7 +41,7 @@ Temporary Items
 _
 obj
 .theos
-packages
+packages/*.ipa
 
 # End of https://www.toptal.com/developers/gitignore/api/macos,theos-tweak
 

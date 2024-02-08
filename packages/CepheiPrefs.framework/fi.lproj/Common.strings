@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Buttons leading to, and titles of, sub-sections. -->
+	<key>ABOUT</key>
+	<string>Tietoja</string>
+	<key>CREDITS</key>
+	<string>Kiitokset</string>
+	<key>GENERAL</key>
+	<string>Yleiset</string>
+	<key>SUPPORT</key>
+	<string>Tuki</string>
+
+	<!-- Label for switch to enable or disable the tweak. -->
+	<key>ENABLED</key>
+	<string>Päällä</string>
+
+	<!-- Label for the state of a switch.-->
+	<key>OFF</key>
+	<string>Pois</string>
+	<key>ON</key>
+	<string>Päällä</string>
+
+	<!-- Button leading to a website. -->
+	<key>VISIT_WEBSITE</key>
+	<string>Vieraile verkkosivulla</string>
+
+	<!-- Heading above the "Email Support" button. -->
+	<key>EMAIL_SUPPORT_HEADER</key>
+	<string>Onko ongelmia?</string>
+
+	<!-- Button leading to a contact form. -->
+	<key>EMAIL_SUPPORT</key>
+	<string>Sähköpostituki</string>
+
+	<!-- Button leading to a donation page. -->
+	<key>DONATE</key>
+	<string>Lahjoita</string>
+
+	<!-- Footer under the donate button. -->
+	<key>DONATE_FOOTER</key>
+	<string>Mikäli olet tyytyväinen tähän twiikkiin, harkitse lahjoituksen antamista.</string>
+
+	<!-- Headings above the credits. -->
+	<key>DEVELOPER</key>
+	<string>Kehittäjä</string>
+	<key>DEVELOPERS</key>
+	<string>Kehittäjät</string>
+	<key>LEAD_DEVELOPER</key>
+	<string>Pääkehittäjä</string>
+	<key>DESIGNER</key>
+	<string>Suunnittelija</string>
+	<key>DESIGNERS</key>
+	<string>Suunnittelijat</string>
+	<key>ICON</key>
+	<string>Kuvake</string>
+	<key>ICONS</key>
+	<string>Kuvakkeet</string>
+	<key>TRANSLATORS</key>
+	<string>Kääntäjät</string>
+
+	<!-- Title of a prompt that allows typing in a value. -->
+	<key>ENTER_VALUE</key>
+	<string>Anna arvo</string>
+</dict>
+</plist>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Buttons leading to, and titles of, sub-sections. -->
+	<key>ABOUT</key>
+	<string>حول</string>
+	<key>CREDITS</key>
+	<string>الشُكر والتقدير</string>
+	<key>GENERAL</key>
+	<string>عام</string>
+	<key>SUPPORT</key>
+	<string>الدعم</string>
+
+	<!-- Label for switch to enable or disable the tweak. -->
+	<key>ENABLED</key>
+	<string>تشغيل</string>
+
+	<!-- Label for the state of a switch.-->
+	<key>OFF</key>
+	<string>إيقاف</string>
+	<key>ON</key>
+	<string>تشغيل</string>
+
+	<!-- Button leading to a website. -->
+	<key>VISIT_WEBSITE</key>
+	<string>زيارة موقعنا</string>
+
+	<!-- Heading above the "Email Support" button. -->
+	<key>EMAIL_SUPPORT_HEADER</key>
+	<string>لديك مشكلة؟</string>
+
+	<!-- Button leading to a contact form. -->
+	<key>EMAIL_SUPPORT</key>
+	<string>الدعم بواسطة البريد الإلكتروني</string>
+
+	<!-- Button leading to a donation page. -->
+	<key>DONATE</key>
+	<string>جرة البقشيش</string>
+
+	<!-- Footer under the donate button. -->
+	<key>DONATE_FOOTER</key>
+	<string>يرجى التفكير في إظهار تقديرك لهذه الأداة عبر تبرع صغير لجرة البقشيش.</string>
+
+	<!-- Headings above the credits. -->
+	<key>DEVELOPER</key>
+	<string>المبرمج</string>
+	<key>DEVELOPERS</key>
+	<string>المبرمجون</string>
+	<key>LEAD_DEVELOPER</key>
+	<string>رئيس المبرمجين</string>
+	<key>DESIGNER</key>
+	<string>المُصمم</string>
+	<key>DESIGNERS</key>
+	<string>المُصممون</string>
+	<key>ICON</key>
+	<string>الأيكونة</string>
+	<key>ICONS</key>
+	<string>الأيكونات</string>
+	<key>TRANSLATORS</key>
+	<string>المترجمون</string>
+
+	<!-- Title of a prompt that allows typing in a value. -->
+	<key>ENTER_VALUE</key>
+	<string>أدخل قيمة</string>
+</dict>
+</plist>

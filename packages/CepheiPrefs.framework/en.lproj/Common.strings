@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Buttons leading to, and titles of, sub-sections. -->
+	<key>ABOUT</key>
+	<string>About</string>
+	<key>CREDITS</key>
+	<string>Credits</string>
+	<key>GENERAL</key>
+	<string>General</string>
+	<key>SUPPORT</key>
+	<string>Support</string>
+
+	<!-- Label for switch to enable or disable the tweak. -->
+	<key>ENABLED</key>
+	<string>Enabled</string>
+
+	<!-- Label for the state of a switch.-->
+	<key>OFF</key>
+	<string>Off</string>
+	<key>ON</key>
+	<string>On</string>
+
+	<!-- Button leading to a website. -->
+	<key>VISIT_WEBSITE</key>
+	<string>Visit Website</string>
+
+	<!-- Heading above the "Email Support" button. -->
+	<key>EMAIL_SUPPORT_HEADER</key>
+	<string>Having Problems?</string>
+
+	<!-- Button leading to a contact form. -->
+	<key>EMAIL_SUPPORT</key>
+	<string>Email Support</string>
+
+	<!-- Button leading to a donation page. -->
+	<key>DONATE</key>
+	<string>Tip Jar</string>
+
+	<!-- Footer under the donate button. -->
+	<key>DONATE_FOOTER</key>
+	<string>Please consider showing your appreciation for this tweak with a small donation to the tip jar.</string>
+
+	<!-- Headings above the credits. -->
+	<key>DEVELOPER</key>
+	<string>Developer</string>
+	<key>DEVELOPERS</key>
+	<string>Developers</string>
+	<key>LEAD_DEVELOPER</key>
+	<string>Lead Developer</string>
+	<key>DESIGNER</key>
+	<string>Designer</string>
+	<key>DESIGNERS</key>
+	<string>Designers</string>
+	<key>ICON</key>
+	<string>Icon</string>
+	<key>ICONS</key>
+	<string>Icons</string>
+	<key>TRANSLATORS</key>
+	<string>Translators</string>
+
+	<!-- Title of a prompt that allows typing in a value. -->
+	<key>ENTER_VALUE</key>
+	<string>Enter Value</string>
+</dict>
+</plist>

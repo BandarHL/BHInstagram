@@ -5,7 +5,10 @@
     "editor.formatOnSave": false,
     "files.associations": {
         "*.x": "objective-c",
+        "*.xi": "objective-c",
         "*.m": "objective-c",
-        "*.h": "objective-c"
+        "*.h": "objective-c",
+        "*.xm": "objective-c",
+        "*.xmi": "objective-c"
     }
 }

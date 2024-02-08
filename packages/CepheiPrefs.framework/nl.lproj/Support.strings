@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title displayed in the navigation bar of the support page. -->
+	<key>SUPPORT_TITLE</key>
+	<string>Ondersteuning</string>
+
+	<!-- The subject used when sending a support email. %@ %@ is the package name and version respectively. -->
+	<key>SUPPORT_EMAIL_SUBJECT</key>
+	<string>%@ %@ – Ondersteuning</string>
+
+	<!-- Title of error message shown when no email accounts are set up on the device. -->
+	<key>NO_EMAIL_ACCOUNTS_TITLE</key>
+	<string>Er zijn geen mail accounts geconfigureerd.</string>
+
+	<!-- Explanation of how to add an email account to the device. -->
+	<key>NO_EMAIL_ACCOUNTS_BODY</key>
+	<string>Ga naar uw mailinstellingen om een mailaccount toe te voegen.</string>
+</dict>
+</plist>

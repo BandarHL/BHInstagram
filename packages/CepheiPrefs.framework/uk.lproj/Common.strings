@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Buttons leading to, and titles of, sub-sections. -->
+	<key>ABOUT</key>
+	<string>Про нас</string>
+	<key>CREDITS</key>
+	<string>Подяка</string>
+	<key>GENERAL</key>
+	<string>Загальні</string>
+	<key>SUPPORT</key>
+	<string>Служба підтримки</string>
+
+	<!-- Label for switch to enable or disable the tweak. -->
+	<key>ENABLED</key>
+	<string>Увімкнено</string>
+
+	<!-- Label for the state of a switch.-->
+	<key>OFF</key>
+	<string>Вимк.</string>
+	<key>ON</key>
+	<string>Увімк.</string>
+
+	<!-- Button leading to a website. -->
+	<key>VISIT_WEBSITE</key>
+	<string>Відвідати сайт</string>
+
+	<!-- Heading above the "Email Support" button. -->
+	<key>EMAIL_SUPPORT_HEADER</key>
+	<string>Потрібна допомога?</string>
+
+	<!-- Button leading to a contact form. -->
+	<key>EMAIL_SUPPORT</key>
+	<string>Служба підтримки</string>
+
+	<!-- Button leading to a donation page. -->
+	<key>DONATE</key>
+	<string>Підтримати проект</string>
+
+	<!-- Footer under the donate button. -->
+	<key>DONATE_FOOTER</key>
+	<string>Будь ласка, зробіть пожертву, якщо ви хочете подякувати нам за це розширення.</string>
+
+	<!-- Headings above the credits. -->
+	<key>DEVELOPER</key>
+	<string>Розробник</string>
+	<key>DEVELOPERS</key>
+	<string>Розробники</string>
+	<key>LEAD_DEVELOPER</key>
+	<string>Провідний розробник</string>
+	<key>DESIGNER</key>
+	<string>Дизайнер</string>
+	<key>DESIGNERS</key>
+	<string>Дизайнери</string>
+	<key>ICON</key>
+	<string>Піктограма</string>
+	<key>ICONS</key>
+	<string>Піктограми</string>
+	<key>TRANSLATORS</key>
+	<string>Перекладачі</string>
+</dict>
+</plist>

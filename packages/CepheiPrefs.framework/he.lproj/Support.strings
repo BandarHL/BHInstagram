@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title displayed in the navigation bar of the support page. -->
+	<key>SUPPORT_TITLE</key>
+	<string>אין חשבונות דוא"ל שהוגדרו..</string>
+
+	<!-- Explanation of how to add an email account to the device. -->
+	<key>NO_EMAIL_ACCOUNTS_BODY</key>
+	<string>השתמש/י בהגדרות דוא"ל כדי להוסיף חשבון חדש.</string>
+</dict>
+</plist>

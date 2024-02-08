@@ -81,14 +81,17 @@
 - (NSArray *)specifiers {
     if (!_specifiers) {        
         _specifiers = [NSMutableArray arrayWithArray:@[
-            // Section 1: Feed
-            [self newSectionWithTitle:@"Feed" footer:nil],
-            [self newSwitchCellWithTitle:@"Hide Ads" detailTitle:@"Remove all Ads from Instagram app" key:@"hide_ads" defaultValue:true changeAction:nil],
+            // Section 1: General
+            [self newSectionWithTitle:@"General" footer:nil],
+            [self newSwitchCellWithTitle:@"Hide Ads" detailTitle:@"Remove all ads from the Instagram app" key:@"hide_ads" defaultValue:true changeAction:nil],
             [self newSwitchCellWithTitle:@"Show Like count" detailTitle:@"Show like count in the post" key:@"show_like_count" defaultValue:true changeAction:nil],
-            [self newSwitchCellWithTitle:@"Copy description" detailTitle:@"Copy the post description by long press" key:@"copy_description" defaultValue:true changeAction:nil],
-            [self newSwitchCellWithTitle:@"No suggested posts" detailTitle:@"Remove suggested posts from the feed" key:@"no_suggested_post" defaultValue:false changeAction:nil],
+            [self newSwitchCellWithTitle:@"Copy description" detailTitle:@"Copy the post description with a long press" key:@"copy_description" defaultValue:true changeAction:nil],
             
-            // Section 2: Confirm actions
+            // Section 2: Feed
+            [self newSectionWithTitle:@"Feed" footer:nil],
+            [self newSwitchCellWithTitle:@"No suggested posts" detailTitle:@"Remove suggested posts from your feed" key:@"no_suggested_post" defaultValue:false changeAction:nil],
+            
+            // Section 3: Confirm actions
             [self newSectionWithTitle:@"Confirm actions" footer:nil],
             [self newSwitchCellWithTitle:@"Confirm like: Posts" detailTitle:@"Shows an alert when you click the like button on posts to confirm the like" key:@"like_confirm" defaultValue:false changeAction:nil],
             [self newSwitchCellWithTitle:@"Confirm like: Reels" detailTitle:@"Shows an alert when you click the like button on reels to confirm the like" key:@"like_confirm_reels" defaultValue:false changeAction:nil],
@@ -96,30 +99,30 @@
             [self newSwitchCellWithTitle:@"Confirm call" detailTitle:@"Shows an alert when you click the audio/video call button to confirm before calling" key:@"call_confirm" defaultValue:false changeAction:nil],
             [self newSwitchCellWithTitle:@"Confirm posting comment" detailTitle:@"Shows an alert when you click the post comment button to confirm" key:@"post_comment_confirm" defaultValue:false changeAction:nil],
 
-            // Section 3: Save media
+            // Section 4: Save media
             [self newSectionWithTitle:@"Save media" footer:nil],
-            [self newSwitchCellWithTitle:@"Download Videos" detailTitle:@"Download Videos by log press in any video you want." key:@"dw_videos" defaultValue:true changeAction:nil],
-            [self newSwitchCellWithTitle:@"Save profile image" detailTitle:@"Save profile image by long press." key:@"save_profile" defaultValue:true changeAction:nil],
+            [self newSwitchCellWithTitle:@"Download Videos" detailTitle:@"Download Videos by log press in any video you want" key:@"dw_videos" defaultValue:true changeAction:nil],
+            [self newSwitchCellWithTitle:@"Save profile image" detailTitle:@"Save profile image by long press" key:@"save_profile" defaultValue:true changeAction:nil],
 
-            // Section 4: Stories and Messages
+            // Section 5: Stories and Messages
             [self newSectionWithTitle:@"Story and Messages" footer:nil],
-            [self newSwitchCellWithTitle:@"Keep deleted message" detailTitle:@"Keep deleted direct message on the chat." key:@"keep_deleted_message" defaultValue:true changeAction:nil],
-            [self newSwitchCellWithTitle:@"Remove last seen" detailTitle:@"Remove last seen from the chat" key:@"remove_lastseen" defaultValue:false changeAction:nil],
-            [self newSwitchCellWithTitle:@"Remove screenshot alert" detailTitle:nil key:@"remove_screenshot_alert" defaultValue:true changeAction:nil],
-            [self newSwitchCellWithTitle:@"Unlimited replay of once story" detailTitle:@"Unlimited replay of once story in direct chat" key:@"unlimited_replay" defaultValue:false changeAction:nil],
-            [self newSwitchCellWithTitle:@"Disable Story Seen Receipt" detailTitle:nil key:@"no_seen_receipt" defaultValue:false changeAction:nil],
+            [self newSwitchCellWithTitle:@"Keep deleted message" detailTitle:@"Keep deleted direct messages in the chat" key:@"keep_deleted_message" defaultValue:true changeAction:nil],
+            [self newSwitchCellWithTitle:@"Unlimited replay of direct stories" detailTitle:@"Replay direct messages normal/once stories unlimited times" key:@"unlimited_replay" defaultValue:false changeAction:nil],
+            [self newSwitchCellWithTitle:@"Disable sending read receipts" detailTitle:@"Removes the seen text for others when you view a message" key:@"remove_lastseen" defaultValue:false changeAction:nil],
+            [self newSwitchCellWithTitle:@"Remove screenshot alert" detailTitle:@"Removes the alert notifying others that you screenshotted a direct story" key:@"remove_screenshot_alert" defaultValue:true changeAction:nil],
+            [self newSwitchCellWithTitle:@"Disable story seen receipt" detailTitle:@"Hides the notification for others when you view their story" key:@"no_seen_receipt" defaultValue:false changeAction:nil],
 
-            // Section 5: Security
+            // Section 6: Security
             [self newSectionWithTitle:@"Security" footer:nil],
             [self newSwitchCellWithTitle:@"Padlock" detailTitle:@"Lock Instagram with biometrics/password" key:@"padlock" defaultValue:false changeAction:nil],
 
-            // Section 6: Debugging
+            // Section 7: Debugging
             [self newSectionWithTitle:@"Debugging" footer:nil],
             [self newSwitchCellWithTitle:@"Enable FLEX" detailTitle:@"Show FLEX on instagram app." key:@"flex_instagram" defaultValue:false changeAction:@selector(FLEXAction:)],
 
-            // Credits section
+            // Section 8: Credits
             [self newSectionWithTitle:@"Credits" footer:nil],
-            [self newHBTwitterCellWithTitle:@"Tweak Maintainer" twitterUsername:@"SoVeryCuul" customAvatarURL:@"https://unavatar.io/twitter/SoVeryCuul"],
+            [self newHBTwitterCellWithTitle:@"Maintainer" twitterUsername:@"SoVeryCuul" customAvatarURL:@"https://unavatar.io/twitter/SoVeryCuul"],
             [self newHBTwitterCellWithTitle:@"Original Author" twitterUsername:@"BandarHL" customAvatarURL:@"https://unavatar.io/twitter/BandarHL"],
             [self newHBLinkCellWithTitle:@"View Repo" detailTitle:@"View the tweak's source code on GitHub" url:@"https://github.com/SoCuul/BHInsta"]
         ]];

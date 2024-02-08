@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Buttons leading to, and titles of, sub-sections. -->
+	<key>ABOUT</key>
+	<string>정보</string>
+	<key>CREDITS</key>
+	<string>제작진</string>
+	<key>GENERAL</key>
+	<string>일반</string>
+	<key>SUPPORT</key>
+	<string>문의</string>
+
+	<!-- Label for switch to enable or disable the tweak. -->
+	<key>ENABLED</key>
+	<string>사용</string>
+
+	<!-- Label for the state of a switch.-->
+	<key>OFF</key>
+	<string>끔</string>
+	<key>ON</key>
+	<string>켬</string>
+
+	<!-- Button leading to a website. -->
+	<key>VISIT_WEBSITE</key>
+	<string>웹사이트 방문</string>
+
+	<!-- Heading above the "Email Support" button. -->
+	<key>EMAIL_SUPPORT_HEADER</key>
+	<string>문제가 있나요?</string>
+
+	<!-- Button leading to a contact form. -->
+	<key>EMAIL_SUPPORT</key>
+	<string>이메일 지원</string>
+
+	<!-- Button leading to a donation page. -->
+	<key>DONATE</key>
+	<string>팁 저금통</string>
+
+	<!-- Footer under the donate button. -->
+	<key>DONATE_FOOTER</key>
+	<string>팁 저금통에 약간의 기부로 여러분의 감사 표시를 남겨주시면 감사드리겠습니다.</string>
+
+	<!-- Headings above the credits. -->
+	<key>DEVELOPER</key>
+	<string>개발자</string>
+	<key>DEVELOPERS</key>
+	<string>개발자</string>
+	<key>LEAD_DEVELOPER</key>
+	<string>주 개발자</string>
+	<key>DESIGNER</key>
+	<string>디자이너</string>
+	<key>DESIGNERS</key>
+	<string>디자이너</string>
+	<key>ICON</key>
+	<string>아이콘</string>
+	<key>ICONS</key>
+	<string>아이콘</string>
+	<key>TRANSLATORS</key>
+	<string>번역자</string>
+
+	<!-- Title of a prompt that allows typing in a value. -->
+	<key>ENTER_VALUE</key>
+	<string>값을 입력해주세요</string>
+</dict>
+</plist>

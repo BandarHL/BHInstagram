@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Buttons leading to, and titles of, sub-sections. -->
+	<key>ABOUT</key>
+	<string>אודות</string>
+	<key>CREDITS</key>
+	<string>קרדיטים</string>
+	<key>GENERAL</key>
+	<string>כללי</string>
+	<key>SUPPORT</key>
+	<string>תמיכה</string>
+
+	<!-- Label for switch to enable or disable the tweak. -->
+	<key>ENABLED</key>
+	<string>מופעל</string>
+
+	<!-- Label for the state of a switch.-->
+	<key>OFF</key>
+	<string>כבוי</string>
+	<key>ON</key>
+	<string>פעיל</string>
+
+	<!-- Button leading to a website. -->
+	<key>VISIT_WEBSITE</key>
+	<string>בקר/י באתר</string>
+
+	<!-- Heading above the "Email Support" button. -->
+	<key>EMAIL_SUPPORT_HEADER</key>
+	<string>חווה בעיות?</string>
+
+	<!-- Button leading to a contact form. -->
+	<key>EMAIL_SUPPORT</key>
+	<string>שלח/י דואר לתמיכה</string>
+
+	<!-- Button leading to a donation page. -->
+	<key>DONATE</key>
+	<string>כוס טיפים</string>
+
+	<key>DONATE_FOOTER</key>
+	<string>אנא שקול/י להראות את הערתך לטוויק זה עם תרומה קטנה לכוס הטיפים.</string>
+
+	<!-- Headings above the credits. -->
+	<key>DEVELOPER</key>
+	<string>מפתח</string>
+	<key>DEVELOPERS</key>
+	<string>מפתחים</string>
+	<key>LEAD_DEVELOPER</key>
+	<string>מפתח מוביל</string>
+	<key>DESIGNER</key>
+	<string>מעצב</string>
+	<key>DESIGNERS</key>
+	<string>מעצבים</string>
+	<key>ICON</key>
+	<string>אייקון</string>
+	<key>ICONS</key>
+	<string>אייקונים</string>
+	<key>TRANSLATORS</key>
+	<string>מתרגמים</string>
+
+	<!-- Title of a prompt that allows typing in a value. -->
+	<key>ENTER_VALUE</key>
+	<string>הכנס ערך</string>
+</dict>
+</plist>

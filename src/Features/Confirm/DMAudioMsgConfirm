@@ -1,0 +1,21 @@
+#import "../../Manager.h"
+#import "../../Utils.h"
+
+// DM voice message confirm (WIP)
+// !! make sure to change callConfirmation to dmvoicemessageconfirmation or smtn like that
+/* %hook IGDirectVoiceRecordViewController
+- (void)stopRecordingFromButtonTap {
+    if ([BHIManager callConfirmation]) {
+        showConfirmation(^(void) { %orig; });
+    } else {
+        return %orig;
+    }
+}
+- (void)stopRecordingFromInterruption {
+    if ([BHIManager callConfirmation]) {
+        showConfirmation(^(void) { %orig; });
+    } else {
+        return %orig;
+    }
+}
+%end */

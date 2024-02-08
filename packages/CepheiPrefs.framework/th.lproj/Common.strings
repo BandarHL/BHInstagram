@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Buttons leading to, and titles of, sub-sections. -->
+	<key>ABOUT</key>
+	<string>เกี่ยวกับ</string>
+	<key>CREDITS</key>
+	<string>เครดิต</string>
+	<key>GENERAL</key>
+	<string>ทั่วไป</string>
+	<key>SUPPORT</key>
+	<string>การช่วยเหลือ</string>
+
+	<!-- Label for switch to enable or disable the tweak. -->
+	<key>ENABLED</key>
+	<string>เปิด</string>
+
+	<!-- Label for the state of a switch.-->
+	<key>OFF</key>
+	<string>ปิดอยู่</string>
+	<key>ON</key>
+	<string>เปิดอยู่</string>
+
+	<!-- Button leading to a website. -->
+	<key>VISIT_WEBSITE</key>
+	<string>ชมเว็บไซต์</string>
+
+	<!-- Heading above the "Email Support" button. -->
+	<key>EMAIL_SUPPORT_HEADER</key>
+	<string>พบปัญหา ?</string>
+
+	<!-- Button leading to a contact form. -->
+	<key>EMAIL_SUPPORT</key>
+	<string>ส่งอีเมลขอความช่วยเหลือ</string>
+
+	<!-- Button leading to a donation page. -->
+	<key>DONATE</key>
+	<string>ให้ทิป</string>
+
+	<!-- Footer under the donate button. -->
+	<key>DONATE_FOOTER</key>
+	<string>คุณสามารถแสดงความขอบคุณได้โดยการให้ทิปเล็กๆ น้อยๆ</string>
+
+	<!-- Headings above the credits. -->
+	<key>DEVELOPER</key>
+	<string>นักพัฒนา</string>
+	<key>DEVELOPERS</key>
+	<string>ทีมนักพัฒนา</string>
+	<key>LEAD_DEVELOPER</key>
+	<string>หัวหน้านักพัฒนา</string>
+	<key>DESIGNER</key>
+	<string>นักออกแบบ</string>
+	<key>DESIGNERS</key>
+	<string>ทีมนักออกแบบ</string>
+	<key>ICON</key>
+	<string>ผู้ไอคอน</string>
+	<key>ICONS</key>
+	<string>ทีมผู้สร้างไอคอน</string>
+	<key>TRANSLATORS</key>
+	<string>ทีมผู้แปล</string>
+
+	<!-- Title of a prompt that allows typing in a value. -->
+	<key>ENTER_VALUE</key>
+	<string>ใส่ค่า</string>
+</dict>
+</plist>

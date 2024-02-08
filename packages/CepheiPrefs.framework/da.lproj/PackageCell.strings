@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Title of a menu of apps the user can view the package in. -->
+	<key>OPEN_PACKAGE_IN_TITLE</key>
+	<string>Open in…</string>
+
+	<!-- Message displayed below the Open In… title when the package comes from a non-default repository. %@ is the repository URL. -->
+	<key>OPEN_PACKAGE_IN_REPO_NOTICE</key>
+	<string>This package will be installed from the repository %@.</string>
+</dict>
+</plist>

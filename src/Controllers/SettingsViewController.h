@@ -7,6 +7,7 @@
 #import <Preferences/PSSpecifier.h>
 #import <Preferences/PSEditableTableCell.h>
 #import <Preferences/PSSwitchTableCell.h>
+
 #import "../InstagramHeaders.h"
 
 typedef NS_ENUM(NSInteger, DynamicSpecifierOperatorType) {

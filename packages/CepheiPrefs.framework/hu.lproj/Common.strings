@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Buttons leading to, and titles of, sub-sections. -->
+	<key>ABOUT</key>
+	<string>Infó</string>
+	<key>CREDITS</key>
+	<string>Készítõk</string>
+	<key>GENERAL</key>
+	<string>Általános</string>
+	<key>SUPPORT</key>
+	<string>Támogatás</string>
+
+	<!-- Label for switch to enable or disable the tweak. -->
+	<key>ENABLED</key>
+	<string>Engedélyezés</string>
+
+	<!-- Label for the state of a switch.-->
+	<key>OFF</key>
+	<string>Ki</string>
+	<key>ON</key>
+	<string>Be</string>
+
+	<!-- Button leading to a website. -->
+	<key>VISIT_WEBSITE</key>
+	<string>Weboldal megtekintése</string>
+
+	<!-- Heading above the "Email Support" button. -->
+	<key>EMAIL_SUPPORT_HEADER</key>
+	<string>Problémád akadt?</string>
+
+	<!-- Button leading to a contact form. -->
+	<key>EMAIL_SUPPORT</key>
+	<string>Email támogatás</string>
+
+	<!-- Button leading to a donation page. -->
+	<key>DONATE</key>
+	<string>Adakozás</string>
+
+	<!-- Footer under the donate button. -->
+	<key>DONATE_FOOTER</key>
+	<string>Munkánk elismeréseként kérlek fontold meg az adakozást számunkra.</string>
+
+	<!-- Headings above the credits. -->
+	<key>DEVELOPER</key>
+	<string>Fejleszõ</string>
+	<key>DEVELOPERS</key>
+	<string>Fejlesztõk</string>
+	<key>LEAD_DEVELOPER</key>
+	<string>Vezetõ fejlesztõ</string>
+	<key>DESIGNER</key>
+	<string>Tervezõ</string>
+	<key>DESIGNERS</key>
+	<string>Tervezõk</string>
+	<key>ICON</key>
+	<string>Ikon</string>
+	<key>ICONS</key>
+	<string>Ikonok</string>
+	<key>TRANSLATORS</key>
+	<string>Fordítók</string>
+
+	<!-- Title of a prompt that allows typing in a value. -->
+	<key>ENTER_VALUE</key>
+	<string>Adj meg egy értéket</string>
+</dict>
+</plist>

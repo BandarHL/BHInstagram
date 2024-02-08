@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Buttons leading to, and titles of, sub-sections. -->
+	<key>ABOUT</key>
+	<string>Về cái tweak này</string>
+	<key>CREDITS</key>
+	<string>Khen Ngợi</string>
+	<key>GENERAL</key>
+	<string>Cài đặt chung</string>
+	<key>SUPPORT</key>
+	<string>Hỗ Trợ</string>
+
+	<!-- Label for switch to enable or disable the tweak. -->
+	<key>ENABLED</key>
+	<string>Cho Phép</string>
+
+	<!-- Label for the state of a switch.-->
+	<key>OFF</key>
+	<string>Tắt</string>
+	<key>ON</key>
+	<string>Bật</string>
+
+	<!-- Button leading to a website. -->
+	<key>VISIT_WEBSITE</key>
+	<string>Truy Cập Trang Web</string>
+
+	<!-- Heading above the "Email Support" button. -->
+	<key>EMAIL_SUPPORT_HEADER</key>
+	<string>Có Vấn Đề?</string>
+
+	<!-- Button leading to a contact form. -->
+	<key>EMAIL_SUPPORT</key>
+	<string>Hỗ Trợ Bằng Email</string>
+
+	<!-- Button leading to a donation page. -->
+	<key>DONATE</key>
+	<string>Quyên Góp</string>
+
+	<!-- Footer under the donate button. -->
+	<key>DONATE_FOOTER</key>
+	<string>Nếu các bạn thích và muốn ủng hộ tweak này, các bạn có thể quyên góp ủng hộ các nhà phát triển để nhiều tweak hơn nữa trong tương lai.</string>
+
+	<!-- Headings above the credits. -->
+	<key>DEVELOPER</key>
+	<string>Người Phát Triển</string>
+	<key>DEVELOPERS</key>
+	<string>Những Người Phát Triển</string>
+	<key>LEAD_DEVELOPER</key>
+	<string>Người Phát Triển Chính</string>
+	<key>DESIGNER</key>
+	<string>Người Thiết Kế</string>
+	<key>DESIGNERS</key>
+	<string>Những Người Thiết Kế</string>
+	<key>ICON</key>
+	<string>Biểu Tượng</string>
+	<key>ICONS</key>
+	<string>Những Biểu Tượng</string>
+	<key>TRANSLATORS</key>
+	<string>Người Dịch</string>
+
+	<!-- Title of a prompt that allows typing in a value. -->
+	<key>ENTER_VALUE</key>
+	<string>Nhập giá trị</string>
+</dict>
+</plist>
