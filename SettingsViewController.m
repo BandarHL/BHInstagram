@@ -54,7 +54,7 @@
     [buttonCell setButtonAction:action];
     [buttonCell setProperty:@YES forKey:@"big"];
     [buttonCell setProperty:BHButtonTableViewCell.class forKey:@"cellClass"];
-    if (detailText != nil ){
+    if (detailText != nil ) {
         [buttonCell setProperty:detailText forKey:@"subtitle"];
     }
     if (rule != nil) {
@@ -308,6 +308,7 @@
     if ((self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier specifier:specifier])) {
         NSString *subTitle = [specifier.properties[@"subtitle"] copy];
         BOOL isBig = specifier.properties[@"big"] ? ((NSNumber *)specifier.properties[@"big"]).boolValue : NO;
+        self.textLabel.adjustsFontSizeToFitWidth = YES;
         self.detailTextLabel.text = subTitle;
         self.detailTextLabel.numberOfLines = isBig ? 0 : 1;
         self.detailTextLabel.textColor = [UIColor secondaryLabelColor];
