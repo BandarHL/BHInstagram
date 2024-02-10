@@ -218,6 +218,48 @@ static BOOL isAuthenticationShowed = FALSE;
   }
 }
 %end
+// Copy Bio
+
+%hook IGProfileViewController
+
+-(void)bioSectionControllerDidLongPress:(id)arg1 {
+  if ([BHIManager copyBio]) {
+    IGProfileBioModel* bioModel = [self valueForKey:@"_bioModel"];
+    NSString* biography = [[bioModel user] biography];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"HI" preferredStyle:UIAlertControllerStyleAlert];
+	  UIAlertAction* copyButton = [UIAlertAction actionWithTitle:@"Copy Bio" style:UIAlertActionStyleDefault
+    handler:^(UIAlertAction * action) {
+
+      UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+      pasteboard.string = biography;
+    }];
+	  [alert addAction:copyButton];
+    [self presentViewController:alert animated:YES completion:nil];
+  }
+  return %orig;
+	
+
+}
+%end
+
+// Follow Confirm 
+
+%hook IGFollowController
+-(void)_didPressFollowButton {
+	NSInteger UserFollowStatus = self.user.followStatus;
+  if ([BHIManager followConfirmation]) {
+      if (UserFollowStatus == 2){
+        showConfirmation(^(void) { %orig; });
+    }else {
+        %orig;
+      
+    }
+  }else {
+    return %orig;
+  }
+	
+}	
+%end
 
 // like confirm
 %hook IGUFIButtonBarView
@@ -281,6 +323,18 @@ static BOOL isAuthenticationShowed = FALSE;
   }
 }
 %end
+// Like Confirm For Reels :) 
+%hook IGSundialViewerVerticalUFI 
+-(void)_didTapLikeButton:(id)arg1 {
+	if ([BHIManager likeConfirmation]) {
+    showConfirmation(^(void) { %orig; });
+  } else {
+    return %orig;
+  }
+}
+%end
+
+
 
 // Hide Ads
 %hook IGMainFeedListAdapterDataSource

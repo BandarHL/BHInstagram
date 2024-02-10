@@ -8,7 +8,9 @@
 + (BOOL)removeSuggestedPost;
 + (BOOL)showLikeCount;
 + (BOOL)likeConfirmation;
++ (BOOL)followConfirmation;
 + (BOOL)copyDecription;
++ (BOOL)copyBio;
 + (BOOL)Padlock;
 + (BOOL)keepDeletedMessage;
 + (BOOL)hideLastSeen;

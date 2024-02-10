@@ -1,4 +1,4 @@
-TARGET := iphone:clang:latest:13.0
+TARGET := iphone:clang:13.7
 INSTALL_TARGET_PROCESSES = SpringBoard
 
 
