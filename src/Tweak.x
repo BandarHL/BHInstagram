@@ -59,7 +59,7 @@ static BOOL isAuthenticationShowed = FALSE;
 }
 %end
 
-//////
+//////////
 
 %hook HBForceCepheiPrefs
 + (BOOL)forceCepheiPrefsWhichIReallyNeedToAccessAndIKnowWhatImDoingISwear {

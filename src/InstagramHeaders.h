@@ -192,6 +192,10 @@
 - (BOOL)isUser;
 @end
 
+@interface IGFollowController : NSObject 
+@property IGUser *user;
+@end
+
 @interface IGCoreTextView: UIView
 @property(nonatomic, strong) NSString *text;
 - (void)addHandleLongPress; // new

@@ -181,7 +181,7 @@
         [self addSubview:self.greenInput];
         
         self.blueInput = [FLEXColorComponentInputView new];
-        self.blueInput.slider.minimumTrackTintColor = UIColor.blueColor;
+        self.blueInput.slider.minimumTrackTintColor = [UIColor colorWithRed:0/255.f green:239/255.f blue:239/255.f alpha:1.0];
         self.blueInput.delegate = self;
         [self addSubview:self.blueInput];
     }

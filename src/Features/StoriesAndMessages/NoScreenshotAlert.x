@@ -2,7 +2,7 @@
 #import "../../Manager.h"
 
 // ! Note !
-// Not sure if this works, have to test
+// Doesn't work for some reason, need to fix lol
 
 %hook IGScreenshotObserver
 + (id)_onTakenScreenshot {
