@@ -1,5 +1,5 @@
 # BHInsta
-A feature-rich tweak for Instagram on iOS!
+A feature-rich tweak for Instagram on iOS!\
 `Version v0.2.0`
 
 ---
@@ -64,8 +64,8 @@ You can install the tweaked IPA file like any other sideloaded iOS app. If you h
 
 - [AltStore](https://altstore.io/#Downloads) (Free, No notifications*) *Notifications require $99/year Apple Developer Program
 - [Sideloadly](https://sideloadly.io/#download) (Free, No notifications*) *Notifications require $99/year Apple Developer Program
-- [Signulous](https://www.signulous.com/register) ($19.99/year, Works with notifications)
-- [UDID Registrations](https://www.udidregistrations.com/buy) ($9.99/year, Works with notifications)
+- [Signulous](https://www.signulous.com/register) ($19.99/year, Receives notifications)
+- [UDID Registrations](https://www.udidregistrations.com/buy) ($9.99/year, Receives notifications)
 
 # In-App Screenshots
 ![BHInsta Settings](https://i.imgur.com/55ervgv.jpg)
