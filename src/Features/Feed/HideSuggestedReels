@@ -2,3 +2,24 @@
 #import "../../Manager.h"
 
 // Remove suggested reels (carousel, under suggested posts section)
+%hook IGStoryTraySectionController
+- (id)initWithUserSession:(id)arg1
+dataController:(id)arg2
+dataSource:(id)arg3
+loggingContext:(id)arg4
+loggingDelegate:(id)arg5
+entryPoint:(NSInteger)arg6
+traySectionConfiguration:(id)arg7
+storyViewerConfiguration:(id)arg8
+netegoImpressionsStrategy:(id)arg9
+isImmersiveNetego:(BOOL)arg10
+isForcedDarkModeImmersiveNetEgo:(BOOL)arg11
+immersiveAccessibilityExpanded:(BOOL)arg12
+supportsVerticalTray:(BOOL)arg13
+{
+    if ([BHIManager removeSuggestedReels]) {
+        return nil;
+    }
+    return %orig;
+}
+%end

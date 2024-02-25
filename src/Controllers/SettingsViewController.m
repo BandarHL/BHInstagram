@@ -85,31 +85,36 @@
     [TwitterCell setProperty:avatarURL forKey:@"iconURL"];
     return TwitterCell;
 }
+
 - (NSArray *)specifiers {
     if (!_specifiers) {        
         _specifiers = [NSMutableArray arrayWithArray:@[
             // Section 1: General
             [self newSectionWithTitle:@"General" footer:nil],
-            [self newSwitchCellWithTitle:@"Show Like count" detailTitle:@"Show like count in the post" key:@"show_like_count" defaultValue:true changeAction:nil],
+            [self newSwitchCellWithTitle:@"Show like count" detailTitle:@"Show like count in the post" key:@"show_like_count" defaultValue:true changeAction:nil],
             [self newSwitchCellWithTitle:@"Copy description" detailTitle:@"Copy the post description with a long press" key:@"copy_description" defaultValue:true changeAction:nil],
+            [self newSwitchCellWithTitle:@"Do not save recent searches" detailTitle:@"Search bars will no longer save your recent searches." key:@"no_recent_searches" defaultValue:true changeAction:nil],
             
             // Section 2: Feed
             [self newSectionWithTitle:@"Feed" footer:nil],
             [self newSwitchCellWithTitle:@"Hide Ads" detailTitle:@"Remove all ads from the Instagram app" key:@"hide_ads" defaultValue:true changeAction:nil],
             [self newSwitchCellWithTitle:@"No suggested posts" detailTitle:@"Remove suggested posts from your feed" key:@"no_suggested_post" defaultValue:false changeAction:nil],
             [self newSwitchCellWithTitle:@"No suggested for you" detailTitle:@"Hide suggested accounts for you to follow" key:@"no_suggested_account" defaultValue:false changeAction:nil],
+            //[self newSwitchCellWithTitle:@"No suggested reels" detailTitle:@"Hide suggested reels to watch" key:@"no_suggested_reels" defaultValue:false changeAction:nil],
             
             // Section 3: Confirm actions
             [self newSectionWithTitle:@"Confirm actions" footer:nil],
             [self newSwitchCellWithTitle:@"Confirm like: Posts" detailTitle:@"Shows an alert when you click the like button on posts to confirm the like" key:@"like_confirm" defaultValue:false changeAction:nil],
             [self newSwitchCellWithTitle:@"Confirm like: Reels" detailTitle:@"Shows an alert when you click the like button on reels to confirm the like" key:@"like_confirm_reels" defaultValue:false changeAction:nil],
             [self newSwitchCellWithTitle:@"Confirm follow" detailTitle:@"Shows an alert when you click the follow button to confirm the follow" key:@"follow_confirm" defaultValue:false changeAction:nil],
-            [self newSwitchCellWithTitle:@"Confirm call" detailTitle:@"Shows an alert when you click the audio/video call button to confirm before calling" key:@"call_confirm" defaultValue:false changeAction:nil],
+            [self newSwitchCellWithTitle:@"Confirm call" detailTitle:@"Shows an alert when you click the audio/video call button to confirm before calling" key:@"call_confirm" defaultValue:true changeAction:nil],
+            [self newSwitchCellWithTitle:@"Confirm voice messages" detailTitle:@"Shows an alert to confirm before sending a voice message" key:@"voice_message_confirm" defaultValue:true changeAction:nil],
+            [self newSwitchCellWithTitle:@"Confirm sticker interaction" detailTitle:@"Shows an alert when you click a sticker on someone's story to confirm the action" key:@"sticker_interact_confirm" defaultValue:false changeAction:nil],
             [self newSwitchCellWithTitle:@"Confirm posting comment" detailTitle:@"Shows an alert when you click the post comment button to confirm" key:@"post_comment_confirm" defaultValue:false changeAction:nil],
 
             // Section 4: Save media
             [self newSectionWithTitle:@"Save media" footer:nil],
-            [self newSwitchCellWithTitle:@"Download Videos" detailTitle:@"Download videos by long press" key:@"dw_videos" defaultValue:true changeAction:nil],
+            [self newSwitchCellWithTitle:@"Download videos" detailTitle:@"Download videos by long press" key:@"dw_videos" defaultValue:true changeAction:nil],
             [self newSwitchCellWithTitle:@"Save profile image" detailTitle:@"Save profile image by long press" key:@"save_profile" defaultValue:true changeAction:nil],
 
             // Section 5: Stories and Messages
@@ -127,7 +132,6 @@
             // Section 7: Debugging
             [self newSectionWithTitle:@"Debugging" footer:nil],
             [self newSwitchCellWithTitle:@"Enable FLEX" detailTitle:@"Show FLEX on instagram app." key:@"flex_instagram" defaultValue:false changeAction:@selector(FLEXAction:)],
-            /* [self newHBButtonCellWithTitle:@"Clear cache" action:@selector(_clearCache:)], */
 
             // Section 8: Credits
             [self newSectionWithTitle:@"Credits" footer:nil],
@@ -140,46 +144,6 @@
     }
     
     return _specifiers;
-}
-
-- (void)_clearCache {
-    JGProgressHUD *HUD = [[JGProgressHUD alloc] init];
-    HUD.textLabel.text = @"Wowza.";
-    HUD.indicatorView = [[JGProgressHUDErrorIndicatorView alloc] init];
-    [HUD showInView:topMostController().view];
-    [HUD dismissAfterDelay:2.0];
-
-    NSFileManager *fileManager = [NSFileManager defaultManager];  
-    NSString *directoryPath = [NSHomeDirectory() stringByAppendingString:@"/Documents/Library/Caches/"];
-
-    if ([fileManager fileExistsAtPath:directoryPath]) {
-        NSDirectoryEnumerator *dirEnum = [fileManager enumeratorAtPath:directoryPath];
-        NSString *documentsName;
-        while (documentsName = [dirEnum nextObject]) {
-            NSString *filePath = [directoryPath stringByAppendingString:documentsName];
-            BOOL isFileDeleted = [fileManager removeItemAtPath:filePath error:nil];
-            if (isFileDeleted == NO) {
-
-                // Not all files were removed (error)
-                JGProgressHUD *HUD = [[JGProgressHUD alloc] init];
-                HUD.textLabel.text = @"Could not clear cache.";
-                HUD.indicatorView = [[JGProgressHUDErrorIndicatorView alloc] init];
-                [HUD showInView:topMostController().view];
-                [HUD dismissAfterDelay:2.0];
-
-                NSLog(@"Error clearing cache!");
-                break;
-
-            }
-        }
-
-        // Success
-        JGProgressHUD *HUD = [[JGProgressHUD alloc] init];
-        HUD.textLabel.text = @"Cache has been cleared!";
-        HUD.indicatorView = [[JGProgressHUDSuccessIndicatorView alloc] init];
-        [HUD showInView:topMostController().view];
-        [HUD dismissAfterDelay:2.0];
-    }
 }
 
 - (void)reloadSpecifiers {

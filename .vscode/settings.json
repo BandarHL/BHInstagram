@@ -4,11 +4,11 @@
     "editor.trimAutoWhitespace": true,
     "editor.formatOnSave": false,
     "files.associations": {
-        "*.x": "objective-c",
-        "*.xi": "objective-c",
+        "*.x": "logos",
+        "*.xi": "logos",
+        "*.xm": "logos",
+        "*.xmi": "logos",
         "*.m": "objective-c",
-        "*.h": "objective-c",
-        "*.xm": "objective-c",
-        "*.xmi": "objective-c"
+        "*.h": "objective-c"
     }
 }

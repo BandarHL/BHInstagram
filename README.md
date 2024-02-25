@@ -1,20 +1,74 @@
-# BHInstagram
-An awesome tweak for Instagram!
+# BHInsta
+A feature-rich tweak for Instagram on iOS!
+`Version v0.2.0`
+
+---
 
 # Features
-- Hide Ads
-- No suggested post
-- Show Like count
-- Confirm like
+### General
+- Show like count
 - Copy description
-- Download Videos
-- Save profile image
-- Keep deleted message
-- Remove last seen
-- Remove screenshot alert
-- Unlimited replay of once story
-- Disable Story Seen Receipt
-- Padlock
+- Do not save recent searches
 
-# TODO
-- [ ] Add Localization for the tweak.
+### Feed
+- Hide ads
+- No suggested posts
+- No suggested for you (accounts)
+
+### Confirm actions
+- Confirm like: Posts
+- Confirm like: Reels
+- Confirm follow
+- Confirm call
+- Confirm voice messages
+- Confirm sticker interaction
+- Confirm posting comment
+
+### Save media
+- Download videos
+- Save profile image
+
+### Story and messages
+- Keep deleted message
+- Unlimited replay of direct stories
+- Disabling sending read receipts
+- Remove screenshot alert
+- Disable story seen receipt
+
+### Security
+- Padlock (biometric requirement to access app)
+
+# Building
+## Prerequisites
+- XCode + Command-Line Developer Tools
+- [Homebrew](https://brew.sh/)
+- CMake (install with brew)
+- [Theos](https://theos.dev/docs/installation)
+- [Azule](https://github.com/Al4ise/Azule/wiki)
+
+## Setup
+1. Install iOS 14.5 frameworks for theos
+   1. [Download from GitHub repo](https://github.com/xybp888/iOS-SDKs)
+   2. Copy `iPhoneOS14.5.sdk` folder into `~/theos/sdks`
+2. Clone BHInsta repo from GitHub: `git clone --recurse-submodules https://github.com/SoCuul/BHInsta`
+3. [Download decrypted Instagram IPA](https://armconverter.com/decryptedappstore/us/instagram), and place it inside the `packages` folder with the name `com.burbn.instagram.ipa`
+
+## Build IPA
+```sh
+$ chmod +x build.sh
+$ ./build.sh
+```
+
+## Install IPA
+You can install the tweaked IPA file like any other sideloaded iOS app. If you have not done this before, here are some suggestions to get started.
+
+- [AltStore](https://altstore.io/#Downloads) (Free, No notifications*) *Notifications require $99/year Apple Developer Program
+- [Sideloadly](https://sideloadly.io/#download) (Free, No notifications*) *Notifications require $99/year Apple Developer Program
+- [Signulous](https://www.signulous.com/register) ($19.99/year, Works with notifications)
+- [UDID Registrations](https://www.udidregistrations.com/buy) ($9.99/year, Works with notifications)
+
+# In-App Screenshots
+![BHInsta Settings](https://i.imgur.com/55ervgv.jpg)
+
+# Contributing
+Contributions to this tweak are greatly appreciated. Feel free to create a pull request if you would like to contribute.

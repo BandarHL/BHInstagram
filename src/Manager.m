@@ -2,6 +2,7 @@
 #import "InstagramHeaders.h"
 
 @implementation BHIManager
+
 + (BOOL)hideAds {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"hide_ads"];
 }
@@ -16,6 +17,9 @@
 }
 + (BOOL)removeSuggestedAccounts {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"no_suggested_account"];
+}
++ (BOOL)removeSuggestedReels {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"no_suggested_reels"];
 }
 + (BOOL)showLikeCount {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"show_like_count"];
@@ -32,11 +36,20 @@
 + (BOOL)callConfirmation {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"call_confirm"];
 }
++ (BOOL)voiceMessageConfirmation {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"voice_message_confirm"];
+}
++ (BOOL)stickerInteractConfirmation {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"sticker_interact_confirm"];
+}
 + (BOOL)postCommentConfirmation {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"post_comment_confirm"];
 }
 + (BOOL)copyDecription {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"copy_description"];
+}
++ (BOOL)noRecentSearches {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"no_recent_searches"];
 }
 + (BOOL)Padlock {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"padlock"];
@@ -71,20 +84,7 @@
     NSArray <NSURL *> *TempFiles = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:[NSURL fileURLWithPath:NSTemporaryDirectory()] includingPropertiesForKeys:@[] options:NSDirectoryEnumerationSkipsHiddenFiles error:nil];
     
     for (NSURL *file in TempFiles) {
-        if ([file.pathExtension.lowercaseString isEqualToString:@"mp4"]) {
-            [[NSFileManager defaultManager] removeItemAtURL:file error:nil];
-        }
-        if ([file.pathExtension.lowercaseString isEqualToString:@"mov"]) {
-            [[NSFileManager defaultManager] removeItemAtURL:file error:nil];
-        }
-        if ([file.pathExtension.lowercaseString isEqualToString:@"tmp"]) {
-            [[NSFileManager defaultManager] removeItemAtURL:file error:nil];
-        }
-        if ([file hasDirectoryPath]) {
-            if ([BHIManager isEmpty:file]) {
-                [[NSFileManager defaultManager] removeItemAtURL:file error:nil];
-            }
-        }
+        [[NSFileManager defaultManager] removeItemAtURL:file error:nil];
     }
 }
 + (BOOL)isEmpty:(NSURL *)url {
@@ -109,4 +109,5 @@
     NSNumber *number = [NSNumber numberWithFloat:per];
     return [numberFormatter stringFromNumber:number];
 }
+
 @end

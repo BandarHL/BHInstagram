@@ -1,11 +1,11 @@
 #import "../../InstagramHeaders.h"
 #import "../../Manager.h"
 
-static NSArray *removeAdsItemsInList(NSArray *list) {
+static NSArray *removeAdsItemsInList(NSArray *list, BOOL isFeed) {
     NSMutableArray *orig = [list mutableCopy];
     [orig enumerateObjectsWithOptions:NSEnumerationReverse usingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
         // Remove suggested posts
-        if ([BHIManager removeSuggestedPost]) {
+        if (isFeed && [BHIManager removeSuggestedPost]) {
             if ([obj respondsToSelector:@selector(explorePostInFeed)] && [obj performSelector:@selector(explorePostInFeed)]) {
                 [orig removeObjectAtIndex:idx];
             }
@@ -22,7 +22,15 @@ static NSArray *removeAdsItemsInList(NSArray *list) {
 %hook IGMainFeedListAdapterDataSource
 - (NSArray *)objectsForListAdapter:(id)arg1 {
     if ([BHIManager hideAds]) {
-        return removeAdsItemsInList(%orig);
+        return removeAdsItemsInList(%orig, YES);
+    }
+    return %orig;
+}
+%end
+%hook IGContextualFeedViewController
+- (NSArray *)objectsForListAdapter:(id)arg1 {
+    if ([BHIManager hideAds]) {
+        return removeAdsItemsInList(%orig, NO);
     }
     return %orig;
 }
@@ -30,7 +38,7 @@ static NSArray *removeAdsItemsInList(NSArray *list) {
 %hook IGVideoFeedViewController
 - (NSArray *)objectsForListAdapter:(id)arg1 {
     if ([BHIManager hideAds]) {
-        return removeAdsItemsInList(%orig);
+        return removeAdsItemsInList(%orig, NO);
     }
     return %orig;
 }
@@ -38,7 +46,7 @@ static NSArray *removeAdsItemsInList(NSArray *list) {
 %hook IGChainingFeedViewController
 - (NSArray *)objectsForListAdapter:(id)arg1 {
     if ([BHIManager hideAds]) {
-        return removeAdsItemsInList(%orig);
+        return removeAdsItemsInList(%orig, NO);
     }
     return %orig;
 }

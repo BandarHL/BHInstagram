@@ -10,13 +10,15 @@
 
 // Variables that work across features
 BOOL seenButtonEnabled = false;
-BOOL dmStoriesViewedButtonEnabled = false;
+BOOL dmVisualMsgsViewedButtonEnabled = false;
 
 // Tweak first-time setup
 %hook IGInstagramAppDelegate
 - (_Bool)application:(UIApplication *)application didFinishLaunchingWithOptions:(id)arg2 {
     %orig;
-    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"BHInstaFirstRun"]) {
+
+    // Set default config values
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"BHInstaFirstRun"] == nil) {
         [[NSUserDefaults standardUserDefaults] setValue:@"BHInstaFirstRun" forKey:@"BHInstaFirstRun"];
         [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"hide_ads"];
         [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"dw_videos"];
@@ -25,8 +27,17 @@ BOOL dmStoriesViewedButtonEnabled = false;
         [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"show_like_count"];
         [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"copy_description"];
         [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"keep_deleted_message"];
+        [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"call_confirm"];
+
+        // Display settings modal on screen
+        UIViewController *rootController = [[self window] rootViewController];
+        SettingsViewController *settingsViewController = [SettingsViewController new];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
+        
+        [rootController presentViewController:navigationController animated:YES completion:nil];
     }
     [BHIManager cleanCache];
+
     return true;
 }
 
@@ -58,6 +69,55 @@ static BOOL isAuthenticationShowed = FALSE;
     isAuthenticationShowed = FALSE;
 }
 %end
+
+
+// Instagram DM visual messages
+%hook IGDirectVisualMessageViewerSession
+- (id)visualMessageViewerController:(id)arg1 didDetectScreenshotForVisualMessage:(id)arg2 atIndex:(NSInteger)arg3 {
+    if ([BHIManager noScreenShotAlert]) {
+        return nil;
+    }
+    return %orig;
+}
+
+- (id)visualMessageViewerController:(id)arg1 didEndPlaybackForVisualMessage:(id)arg2 atIndex:(NSInteger)arg3 forNavType:(NSInteger)arg4 {
+    if ([BHIManager unlimitedReplay]) {
+        return nil;
+    }
+    return %orig;
+}
+%end
+%hook IGDirectVisualMessageReplayService
+- (id)visualMessageViewerController:(id)arg1 didDetectScreenshotForVisualMessage:(id)arg2 atIndex:(NSInteger)arg3 {
+    if ([BHIManager noScreenShotAlert]) {
+        return nil;
+    }
+    return %orig;
+}
+
+- (id)visualMessageViewerController:(id)arg1 didEndPlaybackForVisualMessage:(id)arg2 atIndex:(NSInteger)arg3 forNavType:(NSInteger)arg4 {
+    if ([BHIManager unlimitedReplay]) {
+        return nil;
+    }
+    return %orig;
+}
+%end
+%hook IGDirectVisualMessageReportService
+- (id)visualMessageViewerController:(id)arg1 didDetectScreenshotForVisualMessage:(id)arg2 atIndex:(NSInteger)arg3 {
+    if ([BHIManager noScreenShotAlert]) {
+        return nil;
+    }
+    return %orig;
+}
+
+- (id)visualMessageViewerController:(id)arg1 didEndPlaybackForVisualMessage:(id)arg2 atIndex:(NSInteger)arg3 forNavType:(NSInteger)arg4 {
+    if ([BHIManager unlimitedReplay]) {
+        return nil;
+    }
+    return %orig;
+}
+%end
+
 
 //////////
 

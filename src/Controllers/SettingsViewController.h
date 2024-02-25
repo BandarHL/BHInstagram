@@ -25,7 +25,6 @@ typedef NS_ENUM(NSInteger, DynamicSpecifierOperatorType) {
 - (PSSpecifier *)newHBLinkCellWithTitle:(NSString *)titleText detailTitle:(NSString *)detailText url:(NSString *)url;
 - (PSSpecifier *)newHBButtonCellWithTitle:(NSString *)titleText action:(SEL)action;
 - (PSSpecifier *)newHBTwitterCellWithTitle:(NSString *)titleText twitterUsername:(NSString *)user customAvatarURL:(NSString *)avatarURL;
-- (void)_clearCache;
 - (void)reloadSpecifiers;
 - (void)collectDynamicSpecifiersFromArray:(NSArray *)array;
 - (BOOL)shouldHideSpecifier:(PSSpecifier *)specifier;

@@ -1,9 +1,13 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+@interface BHIUtils : NSObject
+
 // Colours
-static NSDictionary *bhColours;
++ (UIColor *)BHIColour_Primary;
 
 // Functions
-extern BOOL isNotch(void);
-extern void showConfirmation(void (^okHandler)(void));
++ (BOOL)isNotch;
++ (BOOL)showConfirmation:(void(^)(void))okHandler;
+
+@end

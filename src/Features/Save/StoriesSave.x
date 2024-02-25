@@ -17,7 +17,7 @@
 
         [self addSubview:self.hDownloadButton];
         [NSLayoutConstraint activateConstraints:@[
-            [self.hDownloadButton.topAnchor constraintEqualToAnchor:self.topAnchor constant:(self.frame.size.height - (isNotch() ? 120.0 : 90.0))],
+            [self.hDownloadButton.topAnchor constraintEqualToAnchor:self.topAnchor constant:(self.frame.size.height - ([BHIUtils isNotch] ? 120.0 : 90.0))],
             [self.hDownloadButton.trailingAnchor constraintEqualToAnchor:self.trailingAnchor],
             [self.hDownloadButton.widthAnchor constraintEqualToConstant:50],
             [self.hDownloadButton.heightAnchor constraintEqualToConstant:50],

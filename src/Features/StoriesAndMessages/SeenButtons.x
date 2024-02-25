@@ -1,10 +1,11 @@
 #import "../../InstagramHeaders.h"
 #import "../../Manager.h"
 #import "../../Tweak.h"
+# import "../../Utils.h"
 
 // Seen buttons (in DMs)
 // - Enables no seen for messages
-// - Enables unlimited views of DM stories
+// - Enables unlimited views of DM visual messages
 %hook IGTallNavigationBarView
 - (void)setRightBarButtonItems:(NSArray <UIBarButtonItem *> *)items {
     NSMutableArray *new_items = [items mutableCopy];
@@ -15,21 +16,21 @@
         [new_items addObject:seenButton];
 
         if (seenButtonEnabled) {
-            [seenButton setTintColor:UIColor.blueColor];
+            [seenButton setTintColor:BHIUtils.BHIColour_Primary];
         } else {
             [seenButton setTintColor:UIColor.labelColor];
         }
     }
 
-    // DM stories viewed
+    // DM visual messages viewed
     if ([BHIManager unlimitedReplay]) {
-        UIBarButtonItem *dmStoriesViewedButton = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"photo.badge.checkmark"] style:UIBarButtonItemStylePlain target:self action:@selector(dmStoriesViewedButtonHandler:)];
-        [new_items addObject:dmStoriesViewedButton];
+        UIBarButtonItem *dmVisualMsgsViewedButton = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"photo.badge.checkmark"] style:UIBarButtonItemStylePlain target:self action:@selector(dmVisualMsgsViewedButtonHandler:)];
+        [new_items addObject:dmVisualMsgsViewedButton];
 
-        if (dmStoriesViewedButtonEnabled) {
-            [dmStoriesViewedButton setTintColor:UIColor.blueColor];
+        if (dmVisualMsgsViewedButtonEnabled) {
+            [dmVisualMsgsViewedButton setTintColor:BHIUtils.BHIColour_Primary];
         } else {
-            [dmStoriesViewedButton setTintColor:UIColor.labelColor];
+            [dmVisualMsgsViewedButton setTintColor:UIColor.labelColor];
         }
     }
 
@@ -43,17 +44,17 @@
         [sender setTintColor:UIColor.labelColor];
     } else {
         seenButtonEnabled = true;
-        [sender setTintColor:UIColor.blueColor];
+        [sender setTintColor:BHIUtils.BHIColour_Primary];
     }
 }
-// DM stories viewed button
-%new - (void)dmStoriesViewedButtonHandler:(UIBarButtonItem *)sender {
-    if (dmStoriesViewedButtonEnabled) {
-        dmStoriesViewedButtonEnabled = false;
+// DM visual messages viewed button
+%new - (void)dmVisualMsgsViewedButtonHandler:(UIBarButtonItem *)sender {
+    if (dmVisualMsgsViewedButtonEnabled) {
+        dmVisualMsgsViewedButtonEnabled = false;
         [sender setTintColor:UIColor.labelColor];
     } else {
-        dmStoriesViewedButtonEnabled = true;
-        [sender setTintColor:UIColor.blueColor];
+        dmVisualMsgsViewedButtonEnabled = true;
+        [sender setTintColor:BHIUtils.BHIColour_Primary];
     }
 }
 %end
@@ -78,7 +79,7 @@
 - (void)progressImageView:(id)arg1 didLoadImage:(id)arg2 loadSource:(id)arg3 networkRequestSummary:(id)arg4 {
     if ([BHIManager unlimitedReplay]) {
         // Check if dm stories should be marked as viewed
-        if (dmStoriesViewedButtonEnabled) {}
+        if (dmVisualMsgsViewedButtonEnabled) {}
         else return;
     }
 

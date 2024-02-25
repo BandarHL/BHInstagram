@@ -5,7 +5,7 @@
 // Voice Call
 - (void)_didTapAudioButton:(id)arg1 {
     if ([BHIManager callConfirmation]) {
-        showConfirmation(^(void) { %orig; });
+        [BHIUtils showConfirmation:^(void) { %orig; }];
     } else {
         return %orig;
     }
@@ -14,7 +14,7 @@
 // Video Call
 - (void)_didTapVideoButton:(id)arg1 {
     if ([BHIManager callConfirmation]) {
-        showConfirmation(^(void) { %orig; });
+        [BHIUtils showConfirmation:^(void) { %orig; }];
     } else {
         return %orig;
     }
