@@ -41,8 +41,8 @@ A feature-rich tweak for Instagram on iOS!\
 # Building
 ## Prerequisites
 - XCode + Command-Line Developer Tools
-- [Homebrew](https://brew.sh/)
-- CMake (install with brew)
+- [Homebrew](https://brew.sh/#install)
+- [CMake](https://formulae.brew.sh/formula/cmake#default) (brew install cmake)
 - [Theos](https://theos.dev/docs/installation)
 - [Azule](https://github.com/Al4ise/Azule/wiki)
 
