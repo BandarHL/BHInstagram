@@ -51,6 +51,9 @@
 + (BOOL)noRecentSearches {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"no_recent_searches"];
 }
++ (BOOL)hideTrendingSearches {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"hide_trending_searches"];
+}
 + (BOOL)Padlock {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"padlock"];
 }

@@ -26,8 +26,8 @@ BOOL dmVisualMsgsViewedButtonEnabled = false;
         [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"remove_screenshot_alert"];
         [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"show_like_count"];
         [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"copy_description"];
-        [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"keep_deleted_message"];
         [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"call_confirm"];
+        [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"hide_trending_searches"];
 
         // Display settings modal on screen
         UIViewController *rootController = [[self window] rootViewController];
