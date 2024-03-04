@@ -103,6 +103,7 @@
             [self newSwitchCellWithTitle:@"No suggested posts" detailTitle:@"Remove suggested posts from your feed" key:@"no_suggested_post" defaultValue:false changeAction:nil],
             [self newSwitchCellWithTitle:@"No suggested for you" detailTitle:@"Hide suggested accounts for you to follow" key:@"no_suggested_account" defaultValue:false changeAction:nil],
             //[self newSwitchCellWithTitle:@"No suggested reels" detailTitle:@"Hide suggested reels to watch" key:@"no_suggested_reels" defaultValue:false changeAction:nil],
+            [self newSwitchCellWithTitle:@"No suggested threads posts" detailTitle:@"Hide suggested threads posts" key:@"no_suggested_threads" defaultValue:true changeAction:nil],
             
             // Section 3: Confirm actions
             [self newSectionWithTitle:@"Confirm actions" footer:nil],

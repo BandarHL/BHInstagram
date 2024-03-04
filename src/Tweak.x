@@ -28,6 +28,7 @@ BOOL dmVisualMsgsViewedButtonEnabled = false;
         [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"copy_description"];
         [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"call_confirm"];
         [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"hide_trending_searches"];
+        [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"no_suggested_threads"];
 
         // Display settings modal on screen
         UIViewController *rootController = [[self window] rootViewController];
