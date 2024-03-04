@@ -2,7 +2,6 @@
 #import "InstagramHeaders.h"
 
 @implementation BHIManager
-
 + (BOOL)hideAds {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"hide_ads"];
 }
@@ -81,24 +80,48 @@
 + (BOOL)FLEX {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"flex_instagram"];
 }
+
+
 + (void)cleanCache {
-    NSArray <NSURL *> *DocumentFiles = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:[NSURL fileURLWithPath:NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, true).firstObject] includingPropertiesForKeys:@[] options:NSDirectoryEnumerationSkipsHiddenFiles error:nil];
-    
-    for (NSURL *file in DocumentFiles) {
-        if ([file.pathExtension.lowercaseString isEqualToString:@"mp4"]) {
-            [[NSFileManager defaultManager] removeItemAtURL:file error:nil];
+    // Document/media files
+    NSArray <NSURL *> *documentFiles = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:[NSURL fileURLWithPath:NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, true).firstObject] includingPropertiesForKeys:@[] options:NSDirectoryEnumerationSkipsHiddenFiles error:NULL];
+
+    for (NSURL *file in documentFiles) {
+        if ([file.pathExtension.lowercaseString isEqualToString:@"mp4"] || [file.pathExtension.lowercaseString isEqualToString:@"png"]) {
+            NSString *fileName = [file lastPathComponent];
+            NSLog(@"[BHInsta] Deleting document file: %@", fileName);
+
+            [[NSFileManager defaultManager] removeItemAtURL:file error:NULL];
         }
     }
     
-    NSArray <NSURL *> *TempFiles = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:[NSURL fileURLWithPath:NSTemporaryDirectory()] includingPropertiesForKeys:@[] options:NSDirectoryEnumerationSkipsHiddenFiles error:nil];
-    
-    for (NSURL *file in TempFiles) {
-        [[NSFileManager defaultManager] removeItemAtURL:file error:nil];
+    // Temp files
+    NSArray <NSURL *> *tempFiles = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:[NSURL fileURLWithPath:NSTemporaryDirectory()] includingPropertiesForKeys:@[] options:NSDirectoryEnumerationSkipsHiddenFiles error:NULL];
+
+    for (NSURL *file in tempFiles) {
+        NSString *fileName = [file lastPathComponent];
+        NSLog(@"[BHInsta] Deleting temp file: %@", fileName);
+
+        [[NSFileManager defaultManager] removeItemAtURL:file error:NULL];
     }
+
+    // Cache files
+    NSString *cacheDir = [NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSArray <NSString *> *cacheFiles = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:cacheDir error:NULL];
+
+    for (NSString *fileString in cacheFiles) {
+        NSURL *file = [NSURL URLWithString:fileString];
+        
+        NSString *fileName = [file lastPathComponent];
+        NSLog(@"[BHInsta] Deleting cache file: %@", fileName);
+
+        [[NSFileManager defaultManager] removeItemAtURL:file error:NULL];
+    }
+
 }
 + (BOOL)isEmpty:(NSURL *)url {
-    NSArray *FolderFiles = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:url includingPropertiesForKeys:@[] options:NSDirectoryEnumerationSkipsHiddenFiles error:nil];
-    if (FolderFiles.count == 0) {
+    NSArray *folderFiles = [[NSFileManager defaultManager] contentsOfDirectoryAtURL:url includingPropertiesForKeys:@[] options:NSDirectoryEnumerationSkipsHiddenFiles error:nil];
+    if (folderFiles.count == 0) {
         return true;
     } else {
         return false;
@@ -118,5 +141,4 @@
     NSNumber *number = [NSNumber numberWithFloat:per];
     return [numberFormatter stringFromNumber:number];
 }
-
 @end
