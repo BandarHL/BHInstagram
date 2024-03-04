@@ -51,6 +51,9 @@
 + (BOOL)noRecentSearches {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"no_recent_searches"];
 }
++ (BOOL)hideExploreGrid {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"hide_explore_grid"];
+}
 + (BOOL)hideTrendingSearches {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"hide_trending_searches"];
 }

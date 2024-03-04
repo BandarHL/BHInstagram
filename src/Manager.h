@@ -19,6 +19,7 @@
 + (BOOL)postCommentConfirmation;
 + (BOOL)copyDecription;
 + (BOOL)noRecentSearches;
++ (BOOL)hideExploreGrid;
 + (BOOL)hideTrendingSearches;
 + (BOOL)Padlock;
 + (BOOL)keepDeletedMessage;
