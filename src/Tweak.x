@@ -48,11 +48,6 @@ static BOOL isAuthenticationShowed = FALSE;
 - (void)applicationDidBecomeActive:(id)arg1 {
     %orig;
 
-    // Show FLEX when application becomes active
-    if ([BHIManager FLEX]) {
-        [[objc_getClass("FLEXManager") sharedManager] showExplorer];
-    }
-
     // Padlock (biometric auth)
     if ([BHIManager Padlock] && !isAuthenticationShowed) {
         UIViewController *rootController = [[self window] rootViewController];
@@ -116,6 +111,27 @@ static BOOL isAuthenticationShowed = FALSE;
         return nil;
     }
     return %orig;
+}
+%end
+
+// FLEX explorer gesture handler
+%hook IGRootViewController
+- (void)viewDidLoad {
+    %orig;
+    /* if ([BHIManager profileImageSave]) { */
+        [self addHandleLongPress];
+    /* } */
+}
+%new - (void)addHandleLongPress {
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+    longPress.minimumPressDuration = 1;
+    longPress.numberOfTouchesRequired = 5;
+    [self.view addGestureRecognizer:longPress];
+}
+%new - (void)handleLongPress:(UILongPressGestureRecognizer *)sender {
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        [[objc_getClass("FLEXManager") sharedManager] showExplorer];
+    }
 }
 %end
 

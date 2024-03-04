@@ -6,6 +6,11 @@
 #import "Controllers/SecurityViewController.h"
 #import "../modules/JGProgressHUD/JGProgressHUD.h"
 
+@interface IGRootViewController: UIViewController
+- (void)addHandleLongPress; // new
+- (void)handleLongPress:(UILongPressGestureRecognizer *)sender; // new
+@end
+
 @interface IGViewController: UIViewController
 - (void)_superPresentViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(id)completion;
 @end
@@ -81,6 +86,7 @@
 - (void)addHandleLongPress; // new
 - (void)handleLongPress:(UILongPressGestureRecognizer *)sender; // new
 @end
+
 @interface IGProfilePicturePreviewViewController () <BHIDownloadDelegate>
 @end
 
@@ -105,6 +111,7 @@
 @property (nonatomic, strong) JGProgressHUD *hud;
 @property(readonly, nonatomic) IGMedia *video;
 @end
+
 @interface IGSundialViewerVideoCell () <BHIDownloadDelegate>
 @end
 
@@ -114,6 +121,7 @@
 @property (nonatomic, strong) JGProgressHUD *hud;
 @property (nonatomic, strong) id delegate;
 @end
+
 @interface IGModernFeedVideoCell () <BHIDownloadDelegate>
 @end
 
@@ -178,6 +186,7 @@
 @property (nonatomic, retain) NSString *fileextension;
 - (void)hDownloadButtonPressed:(UIButton *)sender;
 @end
+
 @interface IGStoryViewerContainerView () <BHIDownloadDelegate>
 @end
 

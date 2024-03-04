@@ -134,7 +134,7 @@
 
             // Section 7: Debugging
             [self newSectionWithTitle:@"Debugging" footer:nil],
-            [self newSwitchCellWithTitle:@"Enable FLEX" detailTitle:@"Show FLEX on instagram app." key:@"flex_instagram" defaultValue:false changeAction:@selector(FLEXAction:)],
+            [self newSwitchCellWithTitle:@"Enable FLEX gesture" detailTitle:@"Allows you to hold 5 fingers on the screen to open the FLEX explorer" key:@"flex_instagram" defaultValue:false changeAction:@selector(FLEXAction:)],
 
             // Section 8: Credits
             [self newSectionWithTitle:@"Credits" footer:nil],
