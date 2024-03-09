@@ -5,6 +5,8 @@
 %hook IGFollowController
 - (void)_didPressFollowButton {
     if ([BHIManager followConfirmation]) {
+        NSLog(@"[BHInsta] Confirm follow triggered");
+
         [BHIUtils showConfirmation:^(void) { %orig; }];
     } else {
         return %orig;
@@ -16,6 +18,8 @@
 %hook IGDiscoverPeopleButtonGroupView
 - (void)_onFollowButtonTapped:(id)arg1 {
     if ([BHIManager followConfirmation]) {
+        NSLog(@"[BHInsta] Confirm follow triggered");
+
         [BHIUtils showConfirmation:^(void) { %orig; }];
     } else {
         return %orig;
@@ -23,6 +27,8 @@
 }
 - (void)_onFollowingButtonTapped:(id)arg1 {
     if ([BHIManager followConfirmation]) {
+        NSLog(@"[BHInsta] Confirm follow triggered");
+
         [BHIUtils showConfirmation:^(void) { %orig; }];
     } else {
         return %orig;
@@ -34,6 +40,8 @@
 %hook IGHScrollAYMFCell
 - (void)_didTapAYMFActionButton {
     if ([BHIManager followConfirmation]) {
+        NSLog(@"[BHInsta] Confirm follow triggered");
+
         [BHIUtils showConfirmation:^(void) { %orig; }];
     } else {
         return %orig;
@@ -43,6 +51,8 @@
 %hook IGHScrollAYMFActionButton
 - (void)_didTapTextActionButton {
     if ([BHIManager followConfirmation]) {
+        NSLog(@"[BHInsta] Confirm follow triggered");
+
         [BHIUtils showConfirmation:^(void) { %orig; }];
     } else {
         return %orig;
@@ -54,6 +64,8 @@
 %hook IGUnifiedVideoFollowButton
 - (void)_hackilyHandleOurOwnButtonTaps:(id)arg1 {
     if ([BHIManager followConfirmation]) {
+        NSLog(@"[BHInsta] Confirm follow triggered");
+
         [BHIUtils showConfirmation:^(void) { %orig; }];
     } else {
         return %orig;
@@ -65,6 +77,8 @@
 %hook IGProfileViewController
 - (void)navigationItemsControllerDidTapHeaderFollowButton:(id)arg1 {
     if ([BHIManager followConfirmation]) {
+        NSLog(@"[BHInsta] Confirm follow triggered");
+        
         [BHIUtils showConfirmation:^(void) { %orig; }];
     } else {
         return %orig;

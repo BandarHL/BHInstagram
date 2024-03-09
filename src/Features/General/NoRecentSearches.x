@@ -5,6 +5,8 @@
 %hook IGRecentSearchStore
 - (BOOL)addItem:(id)arg1 {
     if ([BHIManager noRecentSearches]) {
+        NSLog(@"[BHInsta] Disabling recent searches");
+
         return nil;
     } else {
         return %orig;
@@ -16,6 +18,8 @@
 %hook IGDirectRecipientRecentSearchStorage
 - (id)initWithDiskManager:(id)arg1 directCache:(id)arg2 userStore:(id)arg3 currentUser:(id)arg4 featureSets:(id)arg5 {
     if ([BHIManager noRecentSearches]) {
+        NSLog(@"[BHInsta] Disabling recent searches");
+
         return nil;
     } else {
         return %orig;

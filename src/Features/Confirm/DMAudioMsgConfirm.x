@@ -4,6 +4,8 @@
 %hook IGDirectThreadViewController
 - (void)voiceRecordViewController:(id)arg1 didRecordAudioClipWithURL:(id)arg2 waveform:(id)arg3 duration:(CGFloat)arg4 entryPoint:(NSInteger)arg5 {
     if ([BHIManager voiceMessageConfirmation]) {
+        NSLog(@"[BHInsta] DM audio message confirm triggered");
+
         [BHIUtils showConfirmation:^(void) { %orig; }];
     } else {
         return %orig;

@@ -261,6 +261,8 @@
 - (void)setPreferenceValue:(id)value specifier:(PSSpecifier *)specifier {
     NSUserDefaults *Prefs = [NSUserDefaults standardUserDefaults];
     [Prefs setValue:value forKey:[specifier identifier]];
+
+    NSLog(@"[BHInsta] Set user default. Key: %@ | Value: %@", [specifier identifier], value);
     
     if (self.hasDynamicSpecifiers) {
         NSString *specifierID = [specifier propertyForKey:PSIDKey];
@@ -280,8 +282,12 @@
 - (void)FLEXAction:(UISwitch *)sender {
     if (sender.isOn) {
         [[objc_getClass("FLEXManager") sharedManager] showExplorer];
+
+        NSLog(@"[BHInsta] FLEX explorer: Enabled");
     } else {
         [[objc_getClass("FLEXManager") sharedManager] hideExplorer];
+
+        NSLog(@"[BHInsta] FLEX explorer: Disabled");
     }
 }
 @end

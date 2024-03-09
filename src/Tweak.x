@@ -17,8 +17,12 @@ BOOL dmVisualMsgsViewedButtonEnabled = false;
 - (_Bool)application:(UIApplication *)application didFinishLaunchingWithOptions:(id)arg2 {
     %orig;
 
+    NSLog(@"[BHInsta] First run, initializing");
+
     // Set default config values
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"BHInstaFirstRun"] == nil) {
+        NSLog(@"[BHInsta] Setting default values");
+
         [[NSUserDefaults standardUserDefaults] setValue:@"BHInstaFirstRun" forKey:@"BHInstaFirstRun"];
         [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"hide_ads"];
         [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"dw_videos"];
@@ -31,12 +35,15 @@ BOOL dmVisualMsgsViewedButtonEnabled = false;
         [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"no_suggested_threads"];
 
         // Display settings modal on screen
+        NSLog(@"[BHInsta] Displaying BHInsta settings modal");
         UIViewController *rootController = [[self window] rootViewController];
         SettingsViewController *settingsViewController = [SettingsViewController new];
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
         
         [rootController presentViewController:navigationController animated:YES completion:nil];
     }
+
+    NSLog(@"[BHInsta] Cleaning cache...");
     [BHIManager cleanCache];
 
     return true;
@@ -54,7 +61,10 @@ static BOOL isAuthenticationShowed = FALSE;
         SecurityViewController *securityViewController = [SecurityViewController new];
         securityViewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
         [rootController presentViewController:securityViewController animated:YES completion:nil];
+
         isAuthenticationShowed = TRUE;
+
+        NSLog(@"[BHInsta] Padlock authentication: App enabled");
     }
 }
 
@@ -63,6 +73,8 @@ static BOOL isAuthenticationShowed = FALSE;
 
     // Reset padlock status
     isAuthenticationShowed = FALSE;
+
+    NSLog(@"[BHInsta] Padlock authentication: App disabled");
 }
 %end
 

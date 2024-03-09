@@ -18,6 +18,8 @@
 
 %new - (void)handleLongPress:(UILongPressGestureRecognizer *)sender {
     if (sender.state == UIGestureRecognizerStateBegan) {
+        NSLog(@"[BHInsta] Copying description");
+
         // Copy text to system clipboard
         UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
         pasteboard.string = self.text;

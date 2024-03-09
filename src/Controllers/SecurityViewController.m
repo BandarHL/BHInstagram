@@ -26,7 +26,9 @@
 - (void)authenticate {
     LAContext *context = [[LAContext alloc] init];
     NSError *error = nil;
-    
+
+    NSLog(@"[BHInsta] Padlock authentication: Prompting for unlock");
+
     if ([context canEvaluatePolicy:LAPolicyDeviceOwnerAuthentication error:&error]) {
         NSString *reason = @"Authenticate to unlock app";
         
@@ -34,13 +36,15 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (success) {
                     [self dismissViewControllerAnimated:YES completion:nil];
+
+                    NSLog(@"[BHInsta] Padlock authentication: Unlock success");
                 } else {
-                    // error
+                    NSLog(@"[BHInsta] Padlock authentication: Unlock failed");
                 }
             });
         }];
     } else {
-        // No biometric auth
+        NSLog(@"[BHInsta] Padlock authentication: Device authentication not available");
     }
 }
 

@@ -17,6 +17,8 @@
 
 %new - (void)handleLongPress:(UILongPressGestureRecognizer *)sender {
     if (sender.state == UIGestureRecognizerStateBegan) {
+        NSLog(@"[BHInsta] Save pfp: Preparing alert");
+
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"BHInsta Downloader" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         IGImageView *profilePictureView = [self valueForKey:@"_profilePictureView"];
         NSURL *url = profilePictureView.imageSpecifier.url;
@@ -30,8 +32,10 @@
             self.hud.textLabel.text = @"Downloading";
             [self.hud showInView:topMostController().view];
         }]];
-
         [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+        
+        NSLog(@"[BHInsta] Save pfp: Displaying alert");
+
         [self presentViewController:alert animated:YES completion:nil];
     }
 }
@@ -46,6 +50,9 @@
     [manager moveItemAtURL:filePath toURL:newFilePath error:nil];
 
     [self.hud dismiss];
+
+    NSLog(@"[BHInsta] Save pfp: Displaying save dialog");
+
     [BHIManager showSaveVC:newFilePath];
 }
 %new - (void)downloadDidFailureWithError:(NSError *)error {

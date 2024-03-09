@@ -21,8 +21,13 @@
         if  ([self.delegate isKindOfClass:%c(IGFeedItemPhotoCell)]) {
             IGFeedItemPhotoCell *currentCell = self.delegate;
             UIImage *currentImage = [currentCell mediaCellCurrentlyDisplayedImage];
+
+            NSLog(@"[BHInsta] Save media: Displaying save dialog");
+
             [BHIManager showSaveVC:currentImage];
         } else if ([self.delegate isKindOfClass:%c(IGFeedItemPagePhotoCell)]) {
+            NSLog(@"[BHInsta] Save media: Preparing alert");
+
             IGFeedItemPagePhotoCell *currentCell = self.delegate;
             IGPostItem *currentPost = [currentCell post];
 
@@ -36,13 +41,17 @@
                     BHIDownload *dwManager = [[BHIDownload alloc] init];
                     [dwManager downloadFileWithURL:[NSURL URLWithString:[knownImageURLIdentifiersArray objectAtIndex:i]]];
                     [dwManager setDelegate:self];
+
                     self.hud = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
                     self.hud.textLabel.text = @"Downloading";
+
                     [self.hud showInView:topMostController().view];
                 }]];
             }
-
             [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+
+            NSLog(@"[BHInsta] Save media: Displaying alert");
+
             [self.viewController presentViewController:alert animated:YES completion:nil];
         }
     }
@@ -58,6 +67,9 @@
     [manager moveItemAtURL:filePath toURL:newFilePath error:nil];
 
     [self.hud dismiss];
+
+    NSLog(@"[BHInsta] Save media: Displaying save dialog");
+
     [BHIManager showSaveVC:newFilePath];
 }
 %new - (void)downloadDidFailureWithError:(NSError *)error {
@@ -87,6 +99,8 @@
     if (sender.state == UIGestureRecognizerStateBegan) {
         UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"BHInsta Downloader" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
         if ([self.delegate isKindOfClass:%c(IGPageMediaView)]) {
+            NSLog(@"[BHInsta] Save media: Preparing alert");
+            
             IGPageMediaView *mediaDelegate = self.delegate;
             IGPostItem *currentPost = [mediaDelegate currentMediaItem];
             NSArray *videoURLArray = [currentPost.video.allVideoURLs allObjects];
@@ -97,15 +111,22 @@
                     BHIDownload *dwManager = [[BHIDownload alloc] init];
                     [dwManager downloadFileWithURL:[videoURLArray objectAtIndex:i]];
                     [dwManager setDelegate:self];
+
                     self.hud = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
                     self.hud.textLabel.text = @"Downloading";
+
                     [self.hud showInView:topMostController().view];
                 }]];
             }
-
             [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+
+            NSLog(@"[BHInsta] Save media: Displaying alert");
+
             [self.viewController presentViewController:alert animated:YES completion:nil];
-        } else if ([self.delegate isKindOfClass:%c(IGFeedSectionController)]) {
+        }
+        else if ([self.delegate isKindOfClass:%c(IGFeedSectionController)]) {
+            NSLog(@"[BHInsta] Save media: Preparing alert");
+
             NSArray *videoURLArray = [self.post.video.allVideoURLs allObjects];
             
             for (int i = 0; i < [videoURLArray count]; i++) {
@@ -114,13 +135,17 @@
                     BHIDownload *dwManager = [[BHIDownload alloc] init];
                     [dwManager downloadFileWithURL:[videoURLArray objectAtIndex:i]];
                     [dwManager setDelegate:self];
+
                     self.hud = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
                     self.hud.textLabel.text = @"Downloading";
+                    
                     [self.hud showInView:topMostController().view];
                 }]];
             }
-
             [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+
+            NSLog(@"[BHInsta] Save media: Displaying alert");
+
             [self.viewController presentViewController:alert animated:YES completion:nil];
         }
     }
@@ -136,6 +161,9 @@
     [manager moveItemAtURL:filePath toURL:newFilePath error:nil];
 
     [self.hud dismiss];
+    
+    NSLog(@"[BHInsta] Save media: Displaying save dialog");
+
     [BHIManager showSaveVC:newFilePath];
 }
 %new - (void)downloadDidFailureWithError:(NSError *)error {

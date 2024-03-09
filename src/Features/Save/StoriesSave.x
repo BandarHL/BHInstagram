@@ -27,6 +27,7 @@
     return self;
 }
 %new - (void)hDownloadButtonPressed:(UIButton *)sender {
+     NSLog(@"[BHInsta] Save story: Preparing alert");
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"BHInsta Downloader" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
 
     if ([self.mediaView isKindOfClass:%c(IGStoryPhotoView)]) {
@@ -74,6 +75,9 @@
       }]];
     } */
     [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+
+    NSLog(@"[BHInsta] Save story: Displaying alert");
+
     [self.viewController presentViewController:alert animated:YES completion:nil];
 }
 %new - (void)downloadProgress:(float)progress {
@@ -86,6 +90,9 @@
     [manager moveItemAtURL:filePath toURL:newFilePath error:nil];
 
     [self.hud dismiss];
+
+    NSLog(@"[BHInsta] Save story: Displaying save dialog");
+
     [BHIManager showSaveVC:newFilePath];
 }
 %new - (void)downloadDidFailureWithError:(NSError *)error {

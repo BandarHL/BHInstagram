@@ -5,6 +5,8 @@
 %hook IGMainFeedStoryTrayActionDelegate
 - (id)initWithMainFeedContext:(id)arg1 {
     if ([BHIManager removeSuggestedReels]) {
+        NSLog(@"[BHInsta] Hiding suggested reels");
+
         return nil;
     }
     return %orig;
