@@ -1,6 +1,16 @@
 #import "../../InstagramHeaders.h"
 #import "../../Manager.h"
 
+/* %hook IGProfileHeaderNavigationView
+- _rightButtonsLayout.(id)initWithDirection:(NSInteger)arg1 children:(id)arg2 {
+    return nil;
+}
+- _rightButtonsLayout.(id).initWithChildren:(id)arg1 {
+    return nil;
+}
+%end */
+
+/* Legacy (as of March 8th 2023) */
 %hook IGProfileMenuSheetViewController
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 9;

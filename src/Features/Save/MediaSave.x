@@ -6,7 +6,7 @@
 %property (nonatomic, strong) JGProgressHUD *hud;
 - (id)initWithFrame:(CGRect)arg1 {
     id orig = %orig;
-    if ([BHIManager downloadVideos]) {
+    if ([BHIManager downloadMedia]) {
         [orig addHandleLongPress];
     }
     return orig;
@@ -85,7 +85,7 @@
 %property (nonatomic, strong) JGProgressHUD *hud;
 - (id)initWithFrame:(CGRect)arg1 {
     id orig = %orig;
-    if ([BHIManager downloadVideos]) {
+    if ([BHIManager downloadMedia]) {
         [orig addHandleLongPress];
     }
     return orig;
@@ -179,7 +179,7 @@
 %property (nonatomic, strong) JGProgressHUD *hud;
 - (id)initWithFrame:(CGRect)arg1 {
     id orig = %orig;
-    if ([BHIManager downloadVideos]) {
+    if ([BHIManager downloadMedia]) {
         [orig addHandleLongPress];
     }
     return orig;

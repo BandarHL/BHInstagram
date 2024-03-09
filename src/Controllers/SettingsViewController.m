@@ -117,7 +117,7 @@
 
             // Section 4: Save media
             [self newSectionWithTitle:@"Save media" footer:nil],
-            [self newSwitchCellWithTitle:@"Download videos" detailTitle:@"Download videos by long press" key:@"dw_videos" defaultValue:true changeAction:nil],
+            [self newSwitchCellWithTitle:@"Download images/videos" detailTitle:@"Download images/videos by long press" key:@"dw_videos" defaultValue:true changeAction:nil],
             [self newSwitchCellWithTitle:@"Save profile image" detailTitle:@"Save profile image by long press" key:@"save_profile" defaultValue:true changeAction:nil],
 
             // Section 5: Stories and Messages

@@ -9,7 +9,7 @@
 %property (nonatomic, retain) NSString *fileextension;
 - (id)initWithFrame:(CGRect)arg1 shouldCreateComposerBackgroundView:(BOOL)arg2 userSession:(id)arg3 bloksContext:(id)arg4 {
     self = %orig;
-    if ([BHIManager downloadVideos]) {
+    if ([BHIManager downloadMedia]) {
         self.hDownloadButton = [UIButton buttonWithType:UIButtonTypeSystem];
         [self.hDownloadButton addTarget:self action:@selector(hDownloadButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         [self.hDownloadButton setImage:[UIImage systemImageNamed:@"arrow.down.to.line.circle.fill"] forState:UIControlStateNormal];

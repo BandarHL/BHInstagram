@@ -5,7 +5,7 @@
 + (BOOL)hideAds {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"hide_ads"];
 }
-+ (BOOL)downloadVideos {
++ (BOOL)downloadMedia {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"dw_videos"];
 }
 + (BOOL)profileImageSave {
