@@ -20,18 +20,8 @@
     }
 }
 %end
-// No longer works on latest app version
-%hook IGFeedItemVideoView
-- (void)_handleOverlayDoubleTap {
-    if ([BHIManager postLikeConfirmation]) {
-        [BHIUtils showConfirmation:^(void) { %orig; }];
-    } else {
-        return %orig;
-    }
-}
-%end
-%hook IGModernFeedVideoCell
-- (void)videoPlayerOverlayControllerDidDoubleTap:(id)arg1 locationInfo:(id)arg2 {
+%hook IGVideoPlayerOverlayContainerView
+- (void)_handleDoubleTapGesture:(id)arg1 {
     if ([BHIManager postLikeConfirmation]) {
         [BHIUtils showConfirmation:^(void) { %orig; }];
     } else {
