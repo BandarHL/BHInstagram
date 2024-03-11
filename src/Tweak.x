@@ -35,7 +35,7 @@ BOOL dmVisualMsgsViewedButtonEnabled = false;
         [[NSUserDefaults standardUserDefaults] setBool:true forKey:@"no_suggested_threads"];
 
         // Display settings modal on screen
-        NSLog(@"[BHInsta] Displaying BHInsta settings modal");
+        NSLog(@"[BHInsta] Displaying BHInsta first-time settings modal");
         UIViewController *rootController = [[self window] rootViewController];
         SettingsViewController *settingsViewController = [SettingsViewController new];
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
