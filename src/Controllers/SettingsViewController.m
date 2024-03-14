@@ -74,13 +74,6 @@
     }
     return HBLinkCell;
 }
-- (PSSpecifier *)newHBButtonCellWithTitle:(NSString *)titleText action:(SEL)action {
-    PSSpecifier *HBButtonCell = [PSSpecifier preferenceSpecifierNamed:titleText target:self set:@selector(setPreferenceValue:specifier:) get:@selector(readPreferenceValue:) detail:nil cell:PSButtonCell edit:nil];
-    
-    [HBButtonCell setButtonAction:@selector(action:)];
-    [HBButtonCell setProperty:HBTintedTableCell.class forKey:@"cellClass"];
-    return HBButtonCell;
-}
 - (PSSpecifier *)newHBTwitterCellWithTitle:(NSString *)titleText twitterUsername:(NSString *)user customAvatarURL:(NSString *)avatarURL {
     PSSpecifier *TwitterCell = [PSSpecifier preferenceSpecifierNamed:titleText target:self set:@selector(setPreferenceValue:specifier:) get:@selector(readPreferenceValue:) detail:nil cell:1 edit:nil];
     
