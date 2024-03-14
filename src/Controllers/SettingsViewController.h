@@ -9,6 +9,7 @@
 #import <Preferences/PSSwitchTableCell.h>
 
 #import "../InstagramHeaders.h"
+#import "../Tweak.h"
 
 typedef NS_ENUM(NSInteger, DynamicSpecifierOperatorType) {
     EqualToOperatorType,

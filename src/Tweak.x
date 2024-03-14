@@ -8,6 +8,9 @@
 #import "Controllers/SecurityViewController.h"
 #import "Controllers/SettingsViewController.h"
 
+// * Tweak version *
+NSString *BHIVersionString = @"v0.2.2";
+
 // Variables that work across features
 BOOL seenButtonEnabled = false;
 BOOL dmVisualMsgsViewedButtonEnabled = false;
