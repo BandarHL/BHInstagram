@@ -2,14 +2,22 @@
 #import "../../Manager.h"
 #import "../../Controllers/SettingsViewController.h"
 
-// Workaround to display dropdown settings menu, to still show BHInsta settings
-%hook IGProfileViewController
-- (BOOL)_shouldOpenSettingsDirectly {
-    return false;
+// Workaround to show BHInsta settings by clicking on Instagram logo
+%hook IGMainAppHeaderView
+- (void)_logoButtonTapped {
+    NSLog(@"[BHInsta] Displaying BHInsta settings modal");
+
+    UIViewController *rootController = [[UIApplication sharedApplication] delegate].window.rootViewController;
+    SettingsViewController *settingsViewController = [SettingsViewController new];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
+    
+    [rootController presentViewController:navigationController animated:YES completion:nil];
+
+    return;
 }
 %end
 
-// Being phased out by insta (as of March 8th 2023)
+// Legacy (as of March 13th 2023)
 %hook IGProfileMenuSheetViewController
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 9;
@@ -84,7 +92,7 @@
 
     // Add button to children array
     //UIBarButtonItem *bhSettingsButton = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"gear.circle"] style:UIBarButtonItemStylePlain target:self action:@selector(displaySettingsModal)];
-    /* IGBadgedNavigationButton *badgedNavButton = [IGBadgedNavigationButton new]; */
+    // IGBadgedNavigationButton *badgedNavButton = [IGBadgedNavigationButton new];
 
     //UIButton *newButton = [UIButton buttonWithType:UIButtonTypeSystem];
     //[badgedNavButton ]
@@ -92,9 +100,8 @@
     //[newChildren addObject:badgedNavButton];
 
     // Make children array immutable
-    //NSArray *immutableNewChildren = [newChildren copy];
-
-    NSLog(@"[BHInsta] Old Children: %@", children);
+    //NSArray *immutableNewChildren = [newChildren copy]; 
+    NSLog(@"[BHInsta] Old Children: %@", children); 
     NSLog(@"[BHInsta] New Children: %@", newChildren);
     
 
