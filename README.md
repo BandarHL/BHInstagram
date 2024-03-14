@@ -1,6 +1,12 @@
 # BHInsta
 A feature-rich tweak for Instagram on iOS!\
-`Version v0.2.1` | `Tested on Instagram v319.0.0`
+`Version v0.2.2` | `Tested on Instagram v322.1.0`
+
+---
+
+> [!IMPORTANT]  
+> As of a recent Instagram update, the settings menu no longer shows the dropdown.
+> As a temporary workaround, clicking the Instagram logo on the home tab will open BHInsta settings.
 
 ---
 
