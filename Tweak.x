@@ -89,37 +89,7 @@ static BOOL isAuthenticationShowed = FALSE;
 
 %end
 
-%hook IGProfileMenuSheetViewController
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-   return 9;
-}
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  if (indexPath.section == 0 && indexPath.row == 8) {
-    IGProfileSheetTableViewCell *bhinstacell = [[%c(IGProfileSheetTableViewCell) alloc] initWithReuseIdentifier:@"bhinsta_settings"];
-
-    UIImageSymbolConfiguration *configuration = [UIImageSymbolConfiguration configurationWithWeight:UIImageSymbolWeightBold];
-    UIImage *gear = [UIImage systemImageNamed:@"gearshape.fill" withConfiguration:configuration];
-
-    [bhinstacell.imageView setImage:gear];
-    [bhinstacell.imageView setTintColor:[UIColor labelColor]];
-    [bhinstacell.textLabel setText:@"BHInsta settings"];
-
-    return bhinstacell;
-  }
-
-  return %orig;
-}
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  if (indexPath.section == 0 && indexPath.row == 8) {
-    UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:[[SettingsViewController alloc] init]];
-    [self _superPresentViewController:navVC animated:true completion:nil];
-    [tableView deselectRowAtIndexPath:indexPath animated:true];
-  } else {
-    return %orig;
-  }
-}
-%end
 
 
 %hook IGDirectRealtimeIrisThreadDelta
@@ -225,31 +195,48 @@ static BOOL isAuthenticationShowed = FALSE;
   if (sender.state == UIGestureRecognizerStateBegan) {
     UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
     pasteboard.string = self.text;
+
   }
 }
 %end
+
+
 // Copy Bio
+%hook IGProfileBioView
 
-%hook IGProfileViewController
-
--(void)bioSectionControllerDidLongPress:(id)arg1 {
+- (id)initWithFrame:(CGRect)arg1 {
+  self = %orig;
   if ([BHIManager copyBio]) {
-    IGProfileBioModel* bioModel = [self valueForKey:@"_bioModel"];
-    NSString* biography = [[bioModel user] biography];
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"HI" preferredStyle:UIAlertControllerStyleAlert];
+    [self addHandleLongPress];
+    
+  }
+  return self;
+}
+
+%new - (void)addHandleLongPress {
+  UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(handleLongPress:)];
+  longPress.minimumPressDuration = 0.3;
+  [self addGestureRecognizer:longPress];
+}
+
+%new - (void)handleLongPress:(UILongPressGestureRecognizer *)sender {
+  if (sender.state == UIGestureRecognizerStateBegan) {
+    IGCoreTextView* bioTextView = [self valueForKey:@"_infoLabelView"];
+    NSString* bioText = bioTextView.text;
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:nil message:@"BHInsta" preferredStyle:UIAlertControllerStyleAlert];
 	  UIAlertAction* copyButton = [UIAlertAction actionWithTitle:@"Copy Bio" style:UIAlertActionStyleDefault
     handler:^(UIAlertAction * action) {
 
       UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
-      pasteboard.string = biography;
+      pasteboard.string = bioText;
     }];
 	  [alert addAction:copyButton];
-    [self presentViewController:alert animated:YES completion:nil];
-  }
-  return %orig;
-	
+    [topMostController() presentViewController:alert animated:YES completion:nil];
+    
 
+  }
 }
+
 %end
 
 // Follow Confirm 
@@ -272,7 +259,7 @@ static BOOL isAuthenticationShowed = FALSE;
 %end
 
 // like confirm
-%hook IGUFIButtonBarView
+%hook IGUFIInteractionCountsView
 - (void)_onLikeButtonPressed:(id)arg1 {
   if ([BHIManager likeConfirmation]) {
     showConfirmation(^(void) { %orig; });

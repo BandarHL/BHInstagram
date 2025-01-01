@@ -1,4 +1,5 @@
 #import <Foundation/Foundation.h>
+#include <objc/NSObject.h>
 #import <UIKit/UIKit.h>
 #import "BHIManager.h"
 #import "SettingsViewController.h"
@@ -240,12 +241,22 @@
 @end
 
 //
+@interface IGProfileBioView : UIView {
+  IGCoreTextView *_infoLabelView;
+}
+- (void)addHandleLongPress; // new
+- (void)handleLongPress:(UILongPressGestureRecognizer *)sender; // new
+@end
+
 @interface IGTabBarController : UIViewController
 - (void)_superPresentViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(id)completion;
 @end
 
+@interface IGUFIInteractionCountsView : UIView 
+@end
 
 
+//
 
 static BOOL is_iPad() {
     if ([(NSString *)[UIDevice currentDevice].model hasPrefix:@"iPad"]) {
