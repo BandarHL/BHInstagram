@@ -79,6 +79,16 @@ static BOOL isAuthenticationShowed = FALSE;
 %end
 
 // tweak settings
+
+%hook IGTabBarController
+
+-(void)_homeButtonLongPressed:(id)arg1 {
+  UINavigationController *navVC = [[UINavigationController alloc] initWithRootViewController:[[SettingsViewController alloc] init]];
+  [self presentViewController:navVC animated:true completion:nil];
+}
+
+%end
+
 %hook IGProfileMenuSheetViewController
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
    return 9;
@@ -323,7 +333,8 @@ static BOOL isAuthenticationShowed = FALSE;
   }
 }
 %end
-// Like Confirm For Reels :) 
+
+// Like Confirm For Reels 
 %hook IGSundialViewerVerticalUFI 
 -(void)_didTapLikeButton:(id)arg1 {
 	if ([BHIManager likeConfirmation]) {

@@ -239,6 +239,14 @@
 @interface IGInstagramAppDelegate : NSObject <UIApplicationDelegate>
 @end
 
+//
+@interface IGTabBarController : UIViewController
+- (void)_superPresentViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(id)completion;
+@end
+
+
+
+
 static BOOL is_iPad() {
     if ([(NSString *)[UIDevice currentDevice].model hasPrefix:@"iPad"]) {
         return YES;
