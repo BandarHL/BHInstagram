@@ -1,6 +1,5 @@
 #import "InstagramHeaders.h"
 #import <substrate.h>
-
 static BOOL shouldBeSeen = false;
 static BOOL seenButtonEnabled = false;
 
@@ -632,7 +631,8 @@ static BOOL isAuthenticationShowed = FALSE;
 %property (nonatomic, strong) JGProgressHUD *hud;
 %property (nonatomic, retain) UIButton *hDownloadButton;
 %property (nonatomic, retain) NSString *fileextension;
-- (id)initWithFrame:(CGRect)arg1 shouldCreateComposerBackgroundView:(BOOL)arg2 userSession:(id)arg3 bloksContext:(id)arg4 {
+%property (nonatomic, retain) UIButton *hSeenButton;
+- (id)initWithFrame:(CGRect)arg1 shouldCreateComposerBackgroundView:(BOOL)arg2 userSession:(id)arg3 bloksContext:(id)arg4 storyViewerLogger:(id)arg5 storyViewerHelper:(id)arg6 {
   self = %orig;
   if ([BHIManager downloadVideos]) {
     self.hDownloadButton = [UIButton buttonWithType:UIButtonTypeSystem];
@@ -640,16 +640,47 @@ static BOOL isAuthenticationShowed = FALSE;
     [self.hDownloadButton setImage:[UIImage systemImageNamed:@"arrow.down"] forState:UIControlStateNormal];
     [self.hDownloadButton setTranslatesAutoresizingMaskIntoConstraints:false];
 
+    // Mark As Seen Button 
+    self.hSeenButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    [self.hSeenButton addTarget:self action:@selector(seenButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.hSeenButton setImage:[UIImage systemImageNamed:@"eye"] forState:UIControlStateNormal];
+    self.hSeenButton.frame = CGRectMake(10, self.frame.size.height - 120, 150, 50);
+
     [self addSubview:self.hDownloadButton];
+    [self addSubview:self.hSeenButton];
     [NSLayoutConstraint activateConstraints:@[
       [self.hDownloadButton.topAnchor constraintEqualToAnchor:self.topAnchor constant:(self.frame.size.height - (isNotch() ? 120.0 : 90.0))],
       [self.hDownloadButton.trailingAnchor constraintEqualToAnchor:self.trailingAnchor],
       [self.hDownloadButton.widthAnchor constraintEqualToConstant:50],
       [self.hDownloadButton.heightAnchor constraintEqualToConstant:50],
+      [self.hSeenButton.topAnchor constraintEqualToAnchor:self.topAnchor constant:(self.frame.size.height - (isNotch() ? 120.0 : 90.0))],
+      [self.hSeenButton.leadingAnchor constraintEqualToAnchor:self.leadingAnchor], // Added 10.0 padding from the left side
+      [self.hSeenButton.widthAnchor constraintEqualToConstant:50],
+      [self.hSeenButton.heightAnchor constraintEqualToConstant:50],
     ]];
   }
 
   return self;
+}
+%new - (void)seenButtonPressed:(UIButton *)sender {
+  UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"BHInsta, Hi" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    if (self.delegate != nil) {
+    [alert addAction:[UIAlertAction actionWithTitle:@"Mark as Seen" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+      shouldBeSeen = true;
+      if ([(NSObject *)self.delegate isKindOfClass:%c(IGStoryFullscreenSectionController)]) {
+        // RLog(@"Mark as seen 1 ");
+        IGStoryFullscreenSectionController *storyController = (IGStoryFullscreenSectionController *)self.delegate;
+        if ([(NSObject *)storyController.delegate isKindOfClass:%c(IGStoryViewerViewController)]) {
+          IGStoryViewerViewController *storyViewController = (IGStoryViewerViewController *)storyController.delegate;
+          id currentItem = [storyViewController currentStoryItem];
+          [storyViewController fullscreenSectionController:nil didMarkItemAsSeen:currentItem];
+        }
+      }
+    }]];
+  }
+  [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
+  [self.viewController presentViewController:alert animated:YES completion:nil];
+  
 }
 %new - (void)hDownloadButtonPressed:(UIButton *)sender {
   UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"BHInsta, Hi" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
@@ -668,34 +699,20 @@ static BOOL isAuthenticationShowed = FALSE;
       [self.hud showInView:topMostController().view];
     }]];
   } else if ([self.mediaView isKindOfClass:%c(IGStoryVideoView)]) {
-      IGVideo *_video = [((IGStoryVideoView *)self.mediaView).videoPlayer valueForKey:@"_video"];
+      IGVideo *_video = (IGVideo *)((IGStoryVideoView *)self.mediaView).videoPlayer.videoPlayer.video;
       self.fileextension = @"mp4";
-      NSArray *videoURLArray = [_video.allVideoURLs allObjects];
-
-      for (int i = 0; i < [videoURLArray count]; i++) {
+      NSSet *videoURLArray = [_video.allVideoURLs allObjects];
+      NSArray *StoryURLVideo = [videoURLArray allObjects];
+      for (int i = 0; i < [StoryURLVideo count]; i++) {
         [alert addAction:[UIAlertAction actionWithTitle:[NSString stringWithFormat:@"Download video - link %d (%@)", i + 1, i == 0 ? @"HD" : @"SD"] style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
           BHDownload *dwManager = [[BHDownload alloc] init];
-          [dwManager downloadFileWithURL:[videoURLArray objectAtIndex:i]];
+          [dwManager downloadFileWithURL:[StoryURLVideo objectAtIndex:i]];
           [dwManager setDelegate:self];
           self.hud = [JGProgressHUD progressHUDWithStyle:JGProgressHUDStyleDark];
           self.hud.textLabel.text = @"Downloading";
           [self.hud showInView:topMostController().view];
         }]];
     }
-  }
-
-  if (self.delegate != nil) {
-    [alert addAction:[UIAlertAction actionWithTitle:@"Mark as Seen" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-      shouldBeSeen = true;
-      if ([self.delegate isKindOfClass:%c(IGStoryFullscreenSectionController)]) {
-        IGStoryFullscreenSectionController *storyController = self.delegate;
-        if ([storyController.delegate isKindOfClass:%c(IGStoryViewerViewController)]) {
-          IGStoryViewerViewController *storyViewController = storyController.delegate;
-          id currentItem = [storyViewController valueForKey:@"_focusStoryItemOnEntry"];
-          [storyViewController fullscreenSectionController:[storyViewController _getMostVisibleSectionController] didMarkItemAsSeen:currentItem];
-        }
-      }
-    }]];
   }
   [alert addAction:[UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleCancel handler:nil]];
   [self.viewController presentViewController:alert animated:YES completion:nil];
