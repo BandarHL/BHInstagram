@@ -1,10 +1,12 @@
 #import <Foundation/Foundation.h>
+#include <objc/NSObject.h>
 #import <UIKit/UIKit.h>
 #import "BHIManager.h"
 #import "SettingsViewController.h"
 #import "SecurityViewController.h"
 #import "BHDownload.h"
 #import "JGProgressHUD/JGProgressHUD.h"
+#include "RemoteLog.h" // For debugging purposes : https://github.com/Muirey03/RemoteLog -- Remove If Not Needed
 
 @interface IGViewController: UIViewController
 - (void)_superPresentViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(id)completion;
@@ -32,7 +34,9 @@
 @property(readonly, nonatomic) NSURL *url;
 @end
 
-@interface IGVideo : NSObject
+@interface IGVideo : NSObject {
+  NSSet *_allVideoURLs;
+}
 @property(readonly, nonatomic) NSSet *allVideoURLs;
 @end
 
@@ -134,8 +138,25 @@
 @property(readonly, nonatomic) IGImageProgressView *photoView;
 @end
 
+// @protocol IGFNFVideoPlayable
+// @property (readonly, nonatomic) IGFNFVideoPlayer *videoPlayer;
+// @end
+
+@protocol IGVideoURLProvider
+@end
+
+@interface IGFNFVideoPlayer : NSObject
+@property id<IGVideoURLProvider> video;
+@end
+
+@interface IGStatefulVideoPlayer : NSObject
+@property IGFNFVideoPlayer *video;
+@end
+@protocol IGFNFVideoPlayable
+@property (readonly, nonatomic) IGFNFVideoPlayer *videoPlayer;
+@end
 @interface IGStoryVideoView : UIView<IGStoryPlayerMediaViewType>
-@property(retain, nonatomic) IGVideoPlayer *videoPlayer;
+@property(nonatomic, strong, readwrite) id<IGFNFVideoPlayable> videoPlayer;
 @end
 
 @interface IGStoryFullscreenDefaultFooterView: UIView
@@ -151,25 +172,40 @@
 
 @interface IGStoryFullscreenCell: UICollectionViewCell
 @end
-
+@protocol IGStoryItemType
+@end
+@protocol IGUnitltemInformationProviding
+@end
+@interface IGStoryViewerViewModel: NSObject
+@end
 @interface IGStoryViewerViewController : UIViewController
 {
-  id _focusStoryItemOnEntry;
+  // id <IGStoryItemType><IGUnitItemInformationProviding> _focusStoryItemOnEntry;
+  IGStoryViewerViewModel *_focusedModelItem;
 }
 - (id)_getMostVisibleSectionController;
 - (void)fullscreenSectionController:(id)arg1 didMarkItemAsSeen:(id)arg2;
+- (id)currentStoryItem;
 @property (nonatomic) UIView *contentViewForSnapshot;
 @end
 
+@protocol IGStoryFullScreenControllerTypeDelegate
+@end
 @interface IGStoryFullscreenSectionController: NSObject
-@property (nonatomic) id delegate;
+@property (nonatomic, weak, readwrite) id<IGStoryFullScreenControllerTypeDelegate> delegate;
+@end
+
+
+@protocol IGStoryViewerContainerViewDelegate
 @end
 
 @interface IGStoryViewerContainerView: UIView
+@property UIView *superview;
 @property(retain, nonatomic) UIView<IGStoryPlayerMediaViewType> *mediaView;
 @property(nonatomic) IGStoryFullscreenOverlayView *overlayView;
-@property (nonatomic, weak) id delegate;
+@property (nonatomic, weak, readwrite) id<IGStoryViewerContainerViewDelegate> delegate;
 @property(nonatomic, retain) UIButton *hDownloadButton; // new property
+@property(nonatomic, retain) UIButton *hSeenButton;
 @property (nonatomic, strong) JGProgressHUD *hud;
 @property (nonatomic, retain) NSString *fileextension;
 - (void)hDownloadButtonPressed:(UIButton *)sender;
@@ -238,6 +274,25 @@
 
 @interface IGInstagramAppDelegate : NSObject <UIApplicationDelegate>
 @end
+
+//
+@interface IGProfileBioView : UIView {
+  IGCoreTextView *_infoLabelView;
+}
+- (void)addHandleLongPress; // new
+- (void)handleLongPress:(UILongPressGestureRecognizer *)sender; // new
+@end
+
+@interface IGTabBarController : UIViewController
+- (void)_superPresentViewController:(UIViewController *)viewController animated:(BOOL)animated completion:(id)completion;
+@end
+
+@interface IGUFIInteractionCountsView : UIView 
+@end
+
+@interface IGStoryViewerCollectionView : UIView
+@end
+//
 
 static BOOL is_iPad() {
     if ([(NSString *)[UIDevice currentDevice].model hasPrefix:@"iPad"]) {
