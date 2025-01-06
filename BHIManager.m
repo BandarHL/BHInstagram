@@ -35,6 +35,9 @@
 + (BOOL)keepDeletedMessage {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"keep_deleted_message"];
 }
++ (BOOL)disableAutoAdvance {
+    return [[NSUserDefaults standardUserDefaults] boolForKey:@"disable_auto_advance"];
+}
 + (BOOL)hideLastSeen {
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"remove_lastseen"];
 }

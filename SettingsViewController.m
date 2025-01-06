@@ -101,9 +101,10 @@
         PSSpecifier *followConfirmation = [self newSwitchCellWithTitle:@"Confirm Follow" detailTitle:@"Show alert when you click the Follow button to confirm the Follow" key:@"follow_confirm" defaultValue:false changeAction:nil];
         PSSpecifier *copyDecription = [self newSwitchCellWithTitle:@"Copy description" detailTitle:@"Copy the post description by long press" key:@"copy_description" defaultValue:true changeAction:nil];
         PSSpecifier *copyBio = [self newSwitchCellWithTitle:@"Copy Profile Bio" detailTitle:@"Copy the Profile Bio by long press on Bio" key:@"copy_bio" defaultValue:true changeAction:nil];
-        PSSpecifier *downloadVid = [self newSwitchCellWithTitle:@"Download Videos" detailTitle:@"Download Videos by log press in any video you want." key:@"dw_videos" defaultValue:true changeAction:nil];
+        PSSpecifier *downloadVid = [self newSwitchCellWithTitle:@"Download Videos" detailTitle:nil key:@"dw_videos" defaultValue:true changeAction:nil];
         PSSpecifier *profileSave = [self newSwitchCellWithTitle:@"Save profile image" detailTitle:@"Save profile image by long press." key:@"save_profile" defaultValue:true changeAction:nil];
 
+        PSSpecifier *disableAutoAdvance = [self newSwitchCellWithTitle:@"Disable Auto Advance" detailTitle:@"Disable auto advance to the next story" key:@"disable_auto_advance" defaultValue:false changeAction:nil];
         PSSpecifier *keepDelMessage = [self newSwitchCellWithTitle:@"Keep deleted message" detailTitle:@"Keep deleted direct message on the chat." key:@"keep_deleted_message" defaultValue:true changeAction:nil];
         PSSpecifier *hideLastSeen = [self newSwitchCellWithTitle:@"Remove last seen" detailTitle:@"Remove last seen from the chat" key:@"remove_lastseen" defaultValue:false changeAction:nil];
         PSSpecifier *noScreenShotAlert = [self newSwitchCellWithTitle:@"Remove screenshot alert" detailTitle:nil key:@"remove_screenshot_alert" defaultValue:true changeAction:nil];
@@ -133,6 +134,7 @@
 
             storySection, // 3
             keepDelMessage,
+            disableAutoAdvance,
             hideLastSeen,
             noScreenShotAlert,
             unlimtedReply,
@@ -279,14 +281,6 @@
 - (id)readPreferenceValue:(PSSpecifier *)specifier {
     NSUserDefaults *Prefs = [NSUserDefaults standardUserDefaults];
     return [Prefs valueForKey:[specifier identifier]]?:[specifier properties][@"default"];
-}
-
-- (void)FLEXAction:(UISwitch *)sender {
-    // if (sender.isOn) {
-    //     [[objc_getClass("FLEXManager") sharedManager] showExplorer];
-    // } else {
-    //     [[objc_getClass("FLEXManager") sharedManager] hideExplorer];
-    // }
 }
 @end
 
