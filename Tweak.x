@@ -630,7 +630,9 @@ static BOOL isAuthenticationShowed = FALSE;
 %hook IGUFIInteractionCountsView
 - (void)layoutSubviews {
     %orig;
-    [self setupBHInsta];
+    if ([BHIManager downloadVideos]) {
+        [self setupBHInsta];
+    }
 }
 %new - (void)setupBHInsta {
     // Prevent duplicate buttons by checking if it already exists
@@ -638,14 +640,8 @@ static BOOL isAuthenticationShowed = FALSE;
         return;
     }
     
-    if (![self.delegate isKindOfClass:%c(IGFeedItemUFICell)]) return;
     if (![self valueForKey:@"_sendView"]) return;
     UIView *sendView = [self valueForKey:@"_sendView"];
-    IGFeedItemUFICell *cell = self.delegate;
-    if (![cell.delegate isKindOfClass:%c(IGFeedItemUFICellConfigurableDelegateImpl)]) return;
-    IGFeedItemUFICellConfigurableDelegateImpl *delegateImpl = cell.delegate;
-    if (![delegateImpl valueForKey:@"_media"]) return;
-    IGMedia *currentMedia = [delegateImpl valueForKey:@"_media"];
     
     UIButton *downloadButton = [UIButton buttonWithType:UIButtonTypeSystem];
     downloadButton.tag = 999;
@@ -659,6 +655,12 @@ static BOOL isAuthenticationShowed = FALSE;
     [downloadButton setTranslatesAutoresizingMaskIntoConstraints:false];
     
     [downloadButton addAction:[UIAction actionWithHandler:^(__kindof UIAction * _Nonnull action) {
+        if (![self.delegate isKindOfClass:%c(IGFeedItemUFICell)]) return;
+        IGFeedItemUFICell *cell = self.delegate;
+        if (![cell.delegate isKindOfClass:%c(IGFeedItemUFICellConfigurableDelegateImpl)]) return;
+        IGFeedItemUFICellConfigurableDelegateImpl *delegateImpl = cell.delegate;
+        if (![delegateImpl valueForKey:@"_media"]) return;
+        IGMedia *currentMedia = [delegateImpl valueForKey:@"_media"];
         UIAlertController *alert = showDownloadMediaAlert(currentMedia, self, cell.pageControlCurrentPage);
         [topMostController() presentViewController:alert animated:YES completion:nil];
     }] forControlEvents:UIControlEventTouchUpInside];
@@ -698,30 +700,45 @@ static BOOL isAuthenticationShowed = FALSE;
 - (void)configureWithViewModel:(IGSundialViewerUFIViewModel *)viewModel {
     %orig;
     if ([BHIManager downloadVideos]) {
-        IGMedia *currentMedia = viewModel.media;
-        UIButton *downloadButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        [downloadButton setTintColor:UIColor.labelColor];
-        [downloadButton setImage:[UIImage systemImageNamed:@"arrow.down"] forState:UIControlStateNormal];
-        [downloadButton setTranslatesAutoresizingMaskIntoConstraints:false];
-        downloadButton.layer.shadowColor = [UIColor blackColor].CGColor;
-        downloadButton.layer.shadowOpacity = 0.4;
-        downloadButton.layer.shadowOffset = CGSizeMake(-2, 0);
-        downloadButton.layer.shadowRadius = 3;
-        downloadButton.layer.masksToBounds = NO;
+        [self setupBHInsta];
+    }
+}
+%new - (void)setupBHInsta {
+    // Prevent duplicate buttons by checking if it already exists
+    if ([self viewWithTag:999] != nil) {
+        return;
+    }
+
+    UIButton *downloadButton = [UIButton buttonWithType:UIButtonTypeSystem];
+    downloadButton.tag = 999;
+    [downloadButton setTintColor:UIColor.labelColor];
+    [downloadButton setImage:[UIImage systemImageNamed:@"arrow.down"] forState:UIControlStateNormal];
+    [downloadButton setTranslatesAutoresizingMaskIntoConstraints:false];
+    downloadButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    downloadButton.layer.shadowOpacity = 0.4;
+    downloadButton.layer.shadowOffset = CGSizeMake(-2, 0);
+    downloadButton.layer.shadowRadius = 3;
+    downloadButton.layer.masksToBounds = NO;
+
+    [downloadButton addAction:[UIAction actionWithHandler:^(__kindof UIAction * _Nonnull action) {
+        if (![self.delegate isKindOfClass:%c(IGSundialViewerControlsOverlayView)]) return;
+        IGSundialViewerControlsOverlayView *delegate = self.delegate;
+        UIAlertController *alert = showDownloadMediaAlert(delegate.media, self, 0);
+        [topMostController() presentViewController:alert animated:YES completion:nil];
+    }] forControlEvents:UIControlEventTouchUpInside];
+
+
+        [self addSubview:downloadButton];
         [self addSubview:downloadButton];
         
-        [NSLayoutConstraint activateConstraints:@[
-            [downloadButton.centerXAnchor constraintEqualToAnchor:self.centerXAnchor],
-            [downloadButton.bottomAnchor constraintEqualToAnchor:self.ufiLikeButton.topAnchor],
-            [downloadButton.widthAnchor constraintEqualToConstant:44],
-            [downloadButton.heightAnchor constraintEqualToConstant:44],
-        ]];
+    [self addSubview:downloadButton];
         
-        [downloadButton addAction:[UIAction actionWithHandler:^(__kindof UIAction * _Nonnull action) {
-            UIAlertController *alert = showDownloadMediaAlert(currentMedia, self, 0);
-            [topMostController() presentViewController:alert animated:YES completion:nil];
-        }] forControlEvents:UIControlEventTouchUpInside];
-    }
+    [NSLayoutConstraint activateConstraints:@[
+        [downloadButton.centerXAnchor constraintEqualToAnchor:self.centerXAnchor],
+        [downloadButton.bottomAnchor constraintEqualToAnchor:self.ufiLikeButton.topAnchor],
+        [downloadButton.widthAnchor constraintEqualToConstant:44],
+        [downloadButton.heightAnchor constraintEqualToConstant:44],
+    ]];
 }
 %new - (void)downloadProgress:(float)progress {
     hud.detailTextLabel.text = [BHIManager getDownloadingPersent:progress];
@@ -947,62 +964,62 @@ static BOOL isAuthenticationShowed = FALSE;
 
 
 // Enable all these lines of code if you want to compile for sideload
-// NSString *keychainAccessGroup;
-// NSURL *fakeGroupContainerURL;
+NSString *keychainAccessGroup;
+NSURL *fakeGroupContainerURL;
 
-// void loadKeychainAccessGroup() {
-//     NSDictionary* dummyItem = @{
-//         (__bridge id)kSecClass : (__bridge id)kSecClassGenericPassword,
-//         (__bridge id)kSecAttrAccount : @"dummyItem",
-//         (__bridge id)kSecAttrService : @"dummyService",
-//         (__bridge id)kSecReturnAttributes : @YES,
-//     };
+void loadKeychainAccessGroup() {
+    NSDictionary* dummyItem = @{
+        (__bridge id)kSecClass : (__bridge id)kSecClassGenericPassword,
+        (__bridge id)kSecAttrAccount : @"dummyItem",
+        (__bridge id)kSecAttrService : @"dummyService",
+        (__bridge id)kSecReturnAttributes : @YES,
+    };
 
-//     CFTypeRef result;
-//     OSStatus ret = SecItemCopyMatching((__bridge CFDictionaryRef)dummyItem, &result);
-//     if (ret == -25300) {
-//         ret = SecItemAdd((__bridge CFDictionaryRef)dummyItem, &result);
-//     }
+    CFTypeRef result;
+    OSStatus ret = SecItemCopyMatching((__bridge CFDictionaryRef)dummyItem, &result);
+    if (ret == -25300) {
+        ret = SecItemAdd((__bridge CFDictionaryRef)dummyItem, &result);
+    }
 
-//     if (ret == 0 && result) {
-//         NSDictionary* resultDict = (__bridge id)result;
-//         keychainAccessGroup = resultDict[(__bridge id)kSecAttrAccessGroup];
-//         NSLog(@"loaded keychainAccessGroup: %@", keychainAccessGroup);
-//     }
-// }
+    if (ret == 0 && result) {
+        NSDictionary* resultDict = (__bridge id)result;
+        keychainAccessGroup = resultDict[(__bridge id)kSecAttrAccessGroup];
+        NSLog(@"loaded keychainAccessGroup: %@", keychainAccessGroup);
+    }
+}
 
-// %hook NSFileManager
-// - (NSURL *)containerURLForSecurityApplicationGroupIdentifier:(NSString*)groupIdentifier {
-//     NSURL *fakeURL = [fakeGroupContainerURL URLByAppendingPathComponent:groupIdentifier];
-//     createDirectoryIfNotExists(fakeURL);
-//     createDirectoryIfNotExists([fakeURL URLByAppendingPathComponent:@"Library"]);
-//     createDirectoryIfNotExists([fakeURL URLByAppendingPathComponent:@"Library/Caches"]);
+%hook NSFileManager
+- (NSURL *)containerURLForSecurityApplicationGroupIdentifier:(NSString*)groupIdentifier {
+    NSURL *fakeURL = [fakeGroupContainerURL URLByAppendingPathComponent:groupIdentifier];
+    createDirectoryIfNotExists(fakeURL);
+    createDirectoryIfNotExists([fakeURL URLByAppendingPathComponent:@"Library"]);
+    createDirectoryIfNotExists([fakeURL URLByAppendingPathComponent:@"Library/Caches"]);
 
-//     return fakeURL;
-// }
-// %end
+    return fakeURL;
+}
+%end
 
-// %hook FBSDKKeychainStore
-// - (NSString*)accessGroup{
-//     return keychainAccessGroup;
-// }
-// %end
+%hook FBSDKKeychainStore
+- (NSString*)accessGroup{
+    return keychainAccessGroup;
+}
+%end
 
-// %hook FBKeychainItemController
-// - (NSString*)accessGroup {
-//     return keychainAccessGroup;
-// }
-// %end
+%hook FBKeychainItemController
+- (NSString*)accessGroup {
+    return keychainAccessGroup;
+}
+%end
 
-// %hook UICKeyChainStore
-// - (NSString*)accessGroup {
-//     return keychainAccessGroup;
-// }
-// %end
+%hook UICKeyChainStore
+- (NSString*)accessGroup {
+    return keychainAccessGroup;
+}
+%end
 
 %ctor {
-    // fakeGroupContainerURL = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/FakeGroupContainers"] isDirectory:YES];
-    // loadKeychainAccessGroup();
+    fakeGroupContainerURL = [NSURL fileURLWithPath:[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/FakeGroupContainers"] isDirectory:YES];
+    loadKeychainAccessGroup();
     
     %init;
 }

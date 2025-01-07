@@ -72,8 +72,21 @@
 @property (nonatomic, copy, readonly) IGMedia *media;
 @end
 
+@interface IGSundialViewerControlsOverlayController: NSObject
+{
+    IGMedia *_media;
+}
+@end
+
+@interface IGSundialViewerControlsOverlayView: UIView
+@property (nonatomic, weak, readwrite) id delegate; // IGSundialViewerControlsOverlayController
+@property (nonatomic, assign, readonly) IGMedia *media;
+@end
+
 @interface IGSundialViewerVerticalUFI: UIView
+@property (nonatomic, weak, readwrite) id delegate; // IGSundialViewerControlsOverlayView
 @property (nonatomic, assign, readonly) UIButton *ufiLikeButton;
+- (void)setupBHInsta;
  - (void)downloadProgress:(float)progress;
  - (void)downloadDidFinish:(NSURL *)filePath Filename:(NSString *)fileName;
  - (void)downloadDidFailureWithError:(NSError *)error;
