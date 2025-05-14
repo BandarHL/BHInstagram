@@ -532,6 +532,15 @@ static BOOL isAuthenticationShowed = FALSE;
 }
 %end
 
+%hook IGSundialFeedDataSource
+- (NSArray *)objectsForListAdapter:(id)arg1 {
+    if ([BHIManager hideAds]) {
+        return removeAdsItemsInList(%orig);
+    }
+    return %orig;
+}
+%end
+
 %hook IGVideoFeedViewController
 - (NSArray *)objectsForListAdapter:(id)arg1 {
     if ([BHIManager hideAds]) {
@@ -727,6 +736,10 @@ static BOOL isAuthenticationShowed = FALSE;
             [topMostController() presentViewController:alert animated:YES completion:nil];
         } else if ([self.delegate isKindOfClass:%c(_TtC30IGSundialViewerControlsOverlay40IGSundialViewerModernControlsOverlayView)]) {
             _TtC30IGSundialViewerControlsOverlay40IGSundialViewerModernControlsOverlayView *delegate = self.delegate;
+            UIAlertController *alert = showDownloadMediaAlert(delegate.media, self, 0);
+            [topMostController() presentViewController:alert animated:YES completion:nil];
+        } else if ([self.delegate isKindOfClass:%c(_TtC30IGSundialViewerControlsOverlay34IGSundialViewerControlsOverlayView)]) {
+            _TtC30IGSundialViewerControlsOverlay34IGSundialViewerControlsOverlayView *delegate = self.delegate;
             UIAlertController *alert = showDownloadMediaAlert(delegate.media, self, 0);
             [topMostController() presentViewController:alert animated:YES completion:nil];
         }

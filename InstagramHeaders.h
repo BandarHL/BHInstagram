@@ -129,6 +129,10 @@
 @interface IGSundialViewerVideoCell () <BHDownloadDelegate>
 @end
 
+@interface _TtC30IGSundialViewerControlsOverlay34IGSundialViewerControlsOverlayView: NSObject
+@property (nonatomic, assign, readonly) IGMedia *media;
+@end
+
 @interface _TtC30IGSundialViewerControlsOverlay40IGSundialViewerModernControlsOverlayView: NSObject
 @property (nonatomic, assign, readonly) IGMedia *media;
 @end
