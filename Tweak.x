@@ -721,10 +721,15 @@ static BOOL isAuthenticationShowed = FALSE;
     downloadButton.layer.masksToBounds = NO;
 
     [downloadButton addAction:[UIAction actionWithHandler:^(__kindof UIAction * _Nonnull action) {
-        if (![self.delegate isKindOfClass:%c(IGSundialViewerControlsOverlayView)]) return;
-        IGSundialViewerControlsOverlayView *delegate = self.delegate;
-        UIAlertController *alert = showDownloadMediaAlert(delegate.media, self, 0);
-        [topMostController() presentViewController:alert animated:YES completion:nil];
+        if ([self.delegate isKindOfClass:%c(IGSundialViewerControlsOverlayView)]) {
+            IGSundialViewerControlsOverlayView *delegate = self.delegate;
+            UIAlertController *alert = showDownloadMediaAlert(delegate.media, self, 0);
+            [topMostController() presentViewController:alert animated:YES completion:nil];
+        } else if ([self.delegate isKindOfClass:%c(_TtC30IGSundialViewerControlsOverlay40IGSundialViewerModernControlsOverlayView)]) {
+            _TtC30IGSundialViewerControlsOverlay40IGSundialViewerModernControlsOverlayView *delegate = self.delegate;
+            UIAlertController *alert = showDownloadMediaAlert(delegate.media, self, 0);
+            [topMostController() presentViewController:alert animated:YES completion:nil];
+        }
     }] forControlEvents:UIControlEventTouchUpInside];
 
 

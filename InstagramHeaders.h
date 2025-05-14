@@ -129,6 +129,10 @@
 @interface IGSundialViewerVideoCell () <BHDownloadDelegate>
 @end
 
+@interface _TtC30IGSundialViewerControlsOverlay40IGSundialViewerModernControlsOverlayView: NSObject
+@property (nonatomic, assign, readonly) IGMedia *media;
+@end
+
 
 /**
  * For download story photo/video
